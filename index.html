@@ -3,207 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIHAF K-12 Learning Academy | Excellence in Education</title>
+    <title>SIHAF K-12 Learning Academy | Shreveport's Premier Non-Profit Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050853021-ea35c2f3997d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
-        .policy-section { display: none; }
-        .policy-section.active { display: block; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .hero-bg { background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); }
+        .stats-bg { background-image: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); }
+        .policy-content { display: none; transition: all 0.3s ease; }
+        .policy-content.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .scroll-indicator { animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <span class="text-2xl font-bold text-blue-900 leading-tight">SIHAF K-12<br><span class="text-sm font-medium text-blue-600 tracking-widest uppercase">Learning Academy</span></span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="hover:text-blue-600 font-medium">Home</a>
-                    <a href="#about" class="hover:text-blue-600 font-medium">About Us</a>
-                    <a href="#academics" class="hover:text-blue-600 font-medium">Academics</a>
-                    <a href="#admissions" class="hover:text-blue-600 font-medium">Admissions</a>
-                    <a href="#contact" class="hover:text-blue-600 font-medium font-bold text-blue-700">Contact</a>
-                    <a href="#donate" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">Support Our Mission</a>
-                </div>
+    <div class="bg-blue-950 text-white py-2 px-6 flex justify-between items-center text-sm hidden lg:flex">
+        <div class="flex space-x-6">
+            <span><i class="fas fa-map-marker-alt text-yellow-500 mr-2"></i> 350 HEARNE AVE, SHREVEPORT, LA</span>
+            <span><i class="fas fa-envelope text-yellow-500 mr-2"></i> support@sihafk12lacademy.dpdns.org</span>
+        </div>
+        <div class="font-bold">A 501(c)(3) NON-PROFIT INSTITUTION</div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="text-3xl font-bold tracking-tighter text-blue-900">SIHAF</span>
+                <span class="text-xs tracking-[0.3em] font-semibold text-blue-600 uppercase -mt-1">K-12 Learning Academy</span>
+            </div>
+            <div class="hidden lg:flex items-center space-x-10 font-semibold text-slate-600">
+                <a href="#about" class="hover:text-blue-900 transition">Our Academy</a>
+                <a href="#curriculum" class="hover:text-blue-900 transition">Curriculum</a>
+                <a href="#admissions" class="hover:text-blue-900 transition">Admissions</a>
+                <a href="#philanthropy" class="hover:text-blue-900 transition">Philanthropy</a>
+                <a href="#contact" class="bg-blue-900 text-white px-8 py-3 rounded-md hover:bg-blue-800 transition shadow-lg">Contact Us</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6">Empowering Future Leaders</h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-200">A Non-Profit 501(c)(3) Institution dedicated to world-class K-12 education in Shreveport, Louisiana.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#about" class="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">Learn More</a>
-                <a href="#contact" class="bg-transparent border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition">Enroll Today</a>
+    <section class="hero-bg parallax h-[90vh] flex flex-col items-center justify-center text-center text-white px-6">
+        <div class="max-w-5xl animate-fade-in-up">
+            <span class="inline-block px-4 py-1 border border-yellow-500 text-yellow-500 rounded-full text-xs font-bold tracking-widest uppercase mb-6">Established to Serve</span>
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight">Wisdom, Integrity, <br>& Community.</h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                SIHAF K-12 Learning Academy is a registered 501(c)(3) non-profit organization dedicated to fostering intellectual curiosity and moral character in the heart of Louisiana.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#admissions" class="bg-yellow-500 text-blue-950 px-10 py-5 rounded-md font-bold text-lg hover:bg-yellow-400 transition-all transform hover:scale-105">Apply for 2026/27</a>
+                <a href="#philanthropy" class="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-5 rounded-md font-bold text-lg hover:bg-white/20 transition-all">Support Our Mission</a>
             </div>
+        </div>
+        <div class="absolute bottom-10 scroll-indicator text-white/50">
+            <i class="fas fa-chevron-down text-3xl"></i>
         </div>
     </section>
 
-    <div class="bg-blue-900 text-white py-4 text-center">
-        <p class="text-sm uppercase tracking-widest font-semibold">Official 501(c)(3) Non-Profit Organization • Tax-Deductible Contributions</p>
-    </div>
-
-    <section id="about" class="py-20 max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Students Learning" class="rounded-2xl shadow-2xl">
-            </div>
-            <div>
-                <h2 class="text-4xl font-bold text-blue-900 mb-6">Our Mission & Vision</h2>
-                <p class="text-lg text-gray-600 mb-6">At SIHAF K-12 Learning Academy, we believe education is the cornerstone of a thriving community. As a 501(c)(3) non-profit organization, our resources are reinvested directly into our students, teachers, and facilities.</p>
-                <p class="text-lg text-gray-600 mb-6">We provide a holistic learning environment that balances rigorous academics with emotional intelligence, arts, and physical education. Our goal is to ensure that every child, regardless of background, has access to the tools they need to succeed in a globalized world.</p>
-                <div class="grid grid-cols-2 gap-4 mt-8">
-                    <div class="border-l-4 border-blue-600 pl-4">
-                        <h4 class="font-bold text-blue-900">Small Classes</h4>
-                        <p class="text-sm">Personalized attention for every learner.</p>
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Students in Library" class="rounded-2xl shadow-2xl relative z-10">
+                    <div class="absolute -bottom-10 -right-10 bg-blue-900 text-white p-12 rounded-2xl hidden md:block">
+                        <p class="text-4xl font-bold mb-2">100%</p>
+                        <p class="text-blue-200 text-sm tracking-widest">NON-PROFIT<br>FUNDED</p>
                     </div>
-                    <div class="border-l-4 border-blue-600 pl-4">
-                        <h4 class="font-bold text-blue-900">STEM Focused</h4>
-                        <p class="text-sm">Preparing students for the jobs of tomorrow.</p>
+                </div>
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-blue-950 mb-8">A Non-Profit Foundation for Life</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        At SIHAF, we operate under a simple yet profound philosophy: high-quality education should be an investment in the future, not a profit-driven enterprise. As a **501(c)(3) institution**, every dollar received—through tuition or donation—is reinvested into student resources, innovative technology, and our world-class faculty.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                        Our academy serves the Shreveport community by providing a safe, inclusive, and academically rigorous environment for students from Kindergarten through 12th grade. We focus on the "Whole Child" approach, ensuring emotional health is as prioritized as mathematical proficiency.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-blue-900 font-bold mb-2">Scholarship Program</h4>
+                            <p class="text-slate-500 text-sm">Ensuring accessibility for families of all economic backgrounds.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-blue-900 font-bold mb-2">Community Led</h4>
+                            <p class="text-slate-500 text-sm">Governed by a board of educators and civic leaders.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="academics" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold text-blue-900 mb-4">Academic Excellence</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto mb-16">Our curriculum is designed to challenge the mind and inspire the soul across all grade levels.</p>
+    <section class="stats-bg parallax py-24 text-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <p class="text-5xl font-bold text-yellow-500 mb-2">12:1</p>
+                <p class="uppercase tracking-widest text-sm text-blue-100">Student-Teacher Ratio</p>
+            </div>
+            <div>
+                <p class="text-5xl font-bold text-yellow-500 mb-2">100%</p>
+                <p class="uppercase tracking-widest text-sm text-blue-100">College Acceptance</p>
+            </div>
+            <div>
+                <p class="text-5xl font-bold text-yellow-500 mb-2">50+</p>
+                <p class="uppercase tracking-widest text-sm text-blue-100">Annual Scholarships</p>
+            </div>
+            <div>
+                <p class="text-5xl font-bold text-yellow-500 mb-2">501c3</p>
+                <p class="uppercase tracking-widest text-sm text-blue-100">Official Status</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-950 mb-4">Academic Journey</h2>
+                <div class="h-1 w-24 bg-yellow-500 mx-auto"></div>
+            </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-pencil-alt text-2xl"></i>
+            <div class="space-y-16">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="md:w-1/3 object-cover" alt="Primary School">
+                    <div class="p-12 md:w-2/3">
+                        <span class="text-blue-600 font-bold tracking-widest text-sm uppercase">Foundations</span>
+                        <h3 class="text-3xl font-bold mt-2 mb-4">Primary Academy (K-5)</h3>
+                        <p class="text-slate-600 mb-6">Focusing on "Learning to Learn." Our primary curriculum emphasizes literacy, numeracy, and social collaboration. Students engage in daily hands-on STEM labs and immersive arts programs.</p>
+                        <ul class="grid grid-cols-2 gap-3 text-sm font-semibold text-slate-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Singapore Math Method</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Phonics Excellence</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Musical Introduction</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Emotional Intelligence</li>
+                        </ul>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Elementary</h3>
-                    <p class="text-gray-600">Building strong foundations in literacy, numeracy, and social-emotional growth through play and discovery.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-book-open text-2xl"></i>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row-reverse">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="md:w-1/3 object-cover" alt="Middle School">
+                    <div class="p-12 md:w-2/3">
+                        <span class="text-blue-600 font-bold tracking-widest text-sm uppercase">Discovery</span>
+                        <h3 class="text-3xl font-bold mt-2 mb-4">Intermediate Academy (6-8)</h3>
+                        <p class="text-slate-600 mb-6">A transition to independence. We encourage students to question, research, and present. Our middle schoolers begin elective tracks in robotics, foreign languages, and debate.</p>
+                        <ul class="grid grid-cols-2 gap-3 text-sm font-semibold text-slate-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Pre-Algebra Tracks</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Computer Science I</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> World Civilizations</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Athletics Program</li>
+                        </ul>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Middle School</h3>
-                    <p class="text-gray-600">Encouraging critical thinking and independence as students navigate complex subjects and social development.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:transform hover:-translate-y-2 transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-graduation-cap text-2xl"></i>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="md:w-1/3 object-cover" alt="High School">
+                    <div class="p-12 md:w-2/3">
+                        <span class="text-blue-600 font-bold tracking-widest text-sm uppercase">Leadership</span>
+                        <h3 class="text-3xl font-bold mt-2 mb-4">Preparatory Academy (9-12)</h3>
+                        <p class="text-slate-600 mb-6">Preparing for the global stage. Our high school program offers Advanced Placement (AP) courses, college counseling, and a mandatory community service capstone project.</p>
+                        <ul class="grid grid-cols-2 gap-3 text-sm font-semibold text-slate-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> AP & Honors Courses</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Dual Enrollment</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> Career Mentorship</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> SAT/ACT Prep</li>
+                        </ul>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">High School</h3>
-                    <p class="text-gray-600">University preparation through Advanced Placement courses, vocational training, and leadership opportunities.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="donate" class="py-20 bg-blue-800 text-white">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-6">Support Our 501(c)(3) Mission</h2>
-            <p class="text-xl mb-10 text-blue-100">Your contributions are tax-deductible and go directly toward scholarships, classroom technology, and facility improvements. Join us in shaping the future of Shreveport.</p>
-            <button class="bg-yellow-500 text-blue-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition">Make a Donation</button>
+    <section id="philanthropy" class="py-24 bg-blue-950 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Fuel Our Vision</h2>
+            <p class="text-xl text-blue-200 mb-12">As a 501(c)(3) nonprofit, we rely on the generosity of our community to maintain our facilities and offer scholarships to deserving students. Your contribution is more than a gift; it's an investment in a child's future.</p>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="p-6 border border-blue-800 rounded-xl hover:bg-blue-900 transition">
+                    <h4 class="text-2xl font-bold mb-2">$50</h4>
+                    <p class="text-sm text-blue-300">Provides classroom supplies for one month.</p>
+                </div>
+                <div class="p-6 border border-yellow-500 rounded-xl bg-blue-900">
+                    <h4 class="text-2xl font-bold mb-2 text-yellow-500">$500</h4>
+                    <p class="text-sm text-blue-300">Funds a partial scholarship for one semester.</p>
+                </div>
+                <div class="p-6 border border-blue-800 rounded-xl hover:bg-blue-900 transition">
+                    <h4 class="text-2xl font-bold mb-2">$1,000</h4>
+                    <p class="text-sm text-blue-300">Supports modern STEM laboratory equipment.</p>
+                </div>
+            </div>
+            <button class="bg-yellow-500 text-blue-950 px-12 py-5 rounded-full font-bold text-xl hover:bg-yellow-400 transition shadow-2xl">Donate Now Online</button>
         </div>
     </section>
 
-    <section id="contact" class="py-20 max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16">
+    <section class="py-24 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-950 mb-12 text-center">Governance & Safety</h2>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/3 flex flex-col space-y-2">
+                    <button onclick="openPolicy(event, 'p1')" class="policy-btn text-left p-4 rounded-lg bg-blue-50 text-blue-900 font-bold border-l-4 border-blue-900">Privacy Policy</button>
+                    <button onclick="openPolicy(event, 'p2')" class="policy-btn text-left p-4 rounded-lg hover:bg-slate-100 transition border-l-4 border-transparent">Admissions Policy</button>
+                    <button onclick="openPolicy(event, 'p3')" class="policy-btn text-left p-4 rounded-lg hover:bg-slate-100 transition border-l-4 border-transparent">Anti-Discrimination</button>
+                    <button onclick="openPolicy(event, 'p4')" class="policy-btn text-left p-4 rounded-lg hover:bg-slate-100 transition border-l-4 border-transparent">Non-Profit Disclosure</button>
+                </div>
+                <div class="lg:w-2/3 min-h-[300px] p-8 border border-slate-100 rounded-2xl bg-slate-50">
+                    <div id="p1" class="policy-content active">
+                        <h4 class="text-2xl font-bold mb-4">Privacy Policy</h4>
+                        <p class="text-slate-600 leading-relaxed mb-4">SIHAF K-12 Learning Academy is committed to protecting the digital privacy of our students and guardians. We strictly adhere to COPPA and FERPA regulations. Data collected through this website is used solely for the purpose of school communication and enrollment processing.</p>
+                        <p class="text-slate-600 leading-relaxed">We never sell student data to third-party vendors. For more information on how we handle physical records, please contact our administrative office.</p>
+                    </div>
+                    <div id="p2" class="policy-content">
+                        <h4 class="text-2xl font-bold mb-4">Admissions Policy</h4>
+                        <p class="text-slate-600 leading-relaxed mb-4">Enrollment at SIHAF is based on academic history, student interviews, and available space. We seek students who demonstrate a desire to learn and contribute positively to our community.</p>
+                        <p class="text-slate-600 leading-relaxed">Application deadlines for the upcoming academic year are January 15th for early decision and March 30th for regular enrollment.</p>
+                    </div>
+                    <div id="p3" class="policy-content">
+                        <h4 class="text-2xl font-bold mb-4">Anti-Discrimination</h4>
+                        <p class="text-slate-600 leading-relaxed mb-4">SIHAF K-12 Learning Academy admits students of any race, color, national and ethnic origin to all the rights, privileges, programs, and activities generally accorded or made available to students at the school.</p>
+                        <p class="text-slate-600 leading-relaxed">It does not discriminate on the basis of race, color, national and ethnic origin in administration of its educational policies, admissions policies, scholarship programs, and athletic and other school-administered programs.</p>
+                    </div>
+                    <div id="p4" class="policy-content">
+                        <h4 class="text-2xl font-bold mb-4">501(c)(3) Status Disclosure</h4>
+                        <p class="text-slate-600 leading-relaxed mb-4">SIHAF K-12 Learning Academy is a public benefit corporation organized under the laws of Louisiana. We are recognized by the IRS as a tax-exempt organization under Section 501(c)(3).</p>
+                        <p class="text-slate-600 leading-relaxed">Donors can find our annual Form 990 filings and financial statements at our Shreveport office during regular business hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-900 text-white pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-16 mb-20">
+            <div class="lg:col-span-1">
+                <div class="flex flex-col mb-6">
+                    <span class="text-4xl font-bold tracking-tighter text-white">SIHAF</span>
+                    <span class="text-xs tracking-[0.3em] font-semibold text-yellow-500 uppercase">K-12 Learning Academy</span>
+                </div>
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Developing minds, building character, and serving the Shreveport community since 2018.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 flex items-center justify-center rounded-full hover:bg-pink-600 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
             <div>
-                <h2 class="text-4xl font-bold text-blue-900 mb-8">Get In Touch</h2>
-                <p class="mb-8 text-gray-600">Have questions about enrollment or our programs? Our administration team is here to help.</p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Address</h4>
-                            <p class="text-gray-600">350 HEARNE AVE<br>SHREVEPORT, LA 71103</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Email</h4>
-                            <p class="text-gray-600">support@sihafk12lacademy.dpdns.org</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <form class="space-y-4">
-                    <input type="text" placeholder="Your Name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="email" placeholder="Email Address" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <textarea rows="4" placeholder="How can we help you?" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="policies" class="py-20 bg-gray-50 border-t">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10">School Policies & Disclosures</h2>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button onclick="showPolicy('privacy')" class="px-4 py-2 bg-gray-200 rounded-md hover:bg-blue-600 hover:text-white transition">Privacy Policy</button>
-                <button onclick="showPolicy('nonprofit')" class="px-4 py-2 bg-gray-200 rounded-md hover:bg-blue-600 hover:text-white transition">Non-Profit Status</button>
-                <button onclick="showPolicy('terms')" class="px-4 py-2 bg-gray-200 rounded-md hover:bg-blue-600 hover:text-white transition">Terms of Use</button>
+                <h4 class="text-xl font-bold mb-6">Visit Us</h4>
+                <p class="text-slate-400">
+                    350 HEARNE AVE<br>
+                    SHREVEPORT, LA 71103<br><br>
+                    <span class="text-white font-bold">Office Hours:</span><br>
+                    Mon - Fri: 8:00 AM - 4:00 PM
+                </p>
             </div>
 
-            <div id="privacy" class="policy-section active bg-white p-8 rounded shadow text-gray-700">
-                <h3 class="text-xl font-bold mb-4">Privacy Policy</h3>
-                <p>SIHAF K-12 Learning Academy respects the privacy of our students and families. We collect data solely for educational administration and student safety. We do not sell or share your data with third-party marketers.</p>
-            </div>
-            <div id="nonprofit" class="policy-section bg-white p-8 rounded shadow text-gray-700">
-                <h3 class="text-xl font-bold mb-4">501(c)(3) Disclosure</h3>
-                <p>SIHAF K-12 Learning Academy is a registered non-profit organization under section 501(c)(3) of the Internal Revenue Code. All donations are tax-deductible to the extent allowed by law. Our financial records are available for review upon written request to the administrative office.</p>
-            </div>
-            <div id="terms" class="policy-section bg-white p-8 rounded shadow text-gray-700">
-                <h3 class="text-xl font-bold mb-4">Terms of Use</h3>
-                <p>The content on this website is provided for informational purposes. Unauthorized use of school logos, images, or branding is strictly prohibited. By using this site, you agree to our digital safety guidelines.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-blue-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12">
             <div>
-                <h3 class="text-xl font-bold mb-4">SIHAF K-12 Academy</h3>
-                <p class="text-blue-200">Educating the next generation with integrity, compassion, and excellence.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                <ul class="space-y-2 text-blue-200">
-                    <li><a href="#about" class="hover:text-white">About Us</a></li>
-                    <li><a href="#academics" class="hover:text-white">Academics</a></li>
-                    <li><a href="#donate" class="hover:text-white">Support Us</a></li>
-                    <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                <h4 class="text-xl font-bold mb-6">Support</h4>
+                <ul class="text-slate-400 space-y-4">
+                    <li><a href="#philanthropy" class="hover:text-yellow-500 transition">Make a Donation</a></li>
+                    <li><a href="#" class="hover:text-yellow-500 transition">Volunteer</a></li>
+                    <li><a href="#" class="hover:text-yellow-500 transition">Board of Directors</a></li>
+                    <li><a href="#" class="hover:text-yellow-500 transition">Scholarship Info</a></li>
                 </ul>
             </div>
+
             <div>
-                <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-                <p class="text-blue-200">350 HEARNE AVE, SHREVEPORT, LA 71103</p>
-                <p class="text-blue-200">Email: support@sihafk12lacademy.dpdns.org</p>
+                <h4 class="text-xl font-bold mb-6">Contact</h4>
+                <p class="text-slate-400 mb-2">General Inquiries:</p>
+                <p class="text-white font-bold mb-6">support@sihafk12lacademy.dpdns.org</p>
+                <p class="text-slate-400 mb-2">Admissions Office:</p>
+                <p class="text-white font-bold underline">Apply Online Now</p>
             </div>
         </div>
-        <div class="border-t border-blue-800 mt-12 pt-8 text-center text-blue-400 text-sm">
-            &copy; 2026 SIHAF K-12 LEARNING ACADEMY. All Rights Reserved.
+        
+        <div class="max-w-7xl mx-auto px-6 border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 SIHAF K-12 LEARNING ACADEMY. All Rights Reserved. A Registered 501(c)(3) Non-Profit Organization.</p>
         </div>
     </footer>
 
     <script>
-        function showPolicy(id) {
-            document.querySelectorAll('.policy-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
+        function openPolicy(evt, policyName) {
+            var i, content, btns;
+            content = document.getElementsByClassName("policy-content");
+            for (i = 0; i < content.length; i++) {
+                content[i].classList.remove("active");
+            }
+            btns = document.getElementsByClassName("policy-btn");
+            for (i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("bg-blue-50", "text-blue-900", "border-blue-900");
+                btns[i].classList.add("border-transparent");
+            }
+            document.getElementById(policyName).classList.add("active");
+            evt.currentTarget.classList.add("bg-blue-50", "text-blue-900", "border-blue-900");
+            evt.currentTarget.classList.remove("border-transparent");
         }
     </script>
 </body>
