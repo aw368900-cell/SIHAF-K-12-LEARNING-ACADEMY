@@ -9,26 +9,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@100;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --secondary: #f59e0b;
-            --dark: #0f172a;
+            --primary: #818cf8; /* Light Indigo */
+            --secondary: #fbbf24; /* Golden Rod */
+            --dark: #0f172a; /* Slate 900 */
+            --midnight: #020617; /* Slate 950 (Black) */
         }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--midnight); color: #f1f5f9; }
         h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 
-        /* Smooth Glassmorphism Header */
+        /* Smooth Glassmorphism Header - Darkened */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(2, 6, 23, 0.8);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Animated Gradient Background */
+        /* Animated Neon Gradient Background */
         .hero-gradient {
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a8a);
+            background: linear-gradient(-45deg, #020617, #1e1b4b, #312e81, #0f172a);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientBG 20s ease infinite;
         }
 
         @keyframes gradientBG {
@@ -37,140 +38,148 @@
             100% { background-position: 0% 50%; }
         }
 
-        .text-gradient {
+        /* Neon Text Gradient */
+        .text-gradient-neon {
             background: linear-gradient(to right, #818cf8, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.5));
         }
 
         .card-hover {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .card-hover:hover {
             transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(129, 140, 248, 0.3);
+            border-color: rgba(129, 140, 248, 0.4);
         }
 
+        /* Dark Mode Blob Effects */
         .blob {
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
-            filter: blur(50px);
+            filter: blur(80px);
             z-index: -1;
+            opacity: 0.2;
         }
+        .blob-primary { background: radial-gradient(circle, #818cf8 0%, rgba(2, 6, 23, 0) 70%); }
+        .blob-secondary { background: radial-gradient(circle, #fbbf24 0%, rgba(2, 6, 23, 0) 70%); }
     </style>
 </head>
-<body class="bg-[#fcfcfd] text-slate-900 selection:bg-indigo-100 selection:text-indigo-600">
+<body class="selection:bg-indigo-900 selection:text-indigo-200">
 
-    <div class="bg-indigo-600 text-white text-center py-2 text-sm font-semibold tracking-wide">
-        🚀 Now enrolling for the 2026-2027 Academic Year! <span class="underline ml-2 cursor-pointer">Inquire Now</span>
+    <div class="bg-indigo-950 text-indigo-200 text-center py-2.5 text-sm font-semibold tracking-wide border-b border-indigo-900">
+        🚀 Now enrolling for the 2026-2027 Academic Year! <span class="underline ml-2 cursor-pointer text-yellow-400">Inquire Now</span>
     </div>
 
     <nav class="sticky top-0 z-[100] glass-nav transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-2 group cursor-pointer">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover:rotate-12 transition-transform">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-2xl font-black tracking-tight text-slate-900 leading-none">SIHAF</span>
-                        <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-widest">K-12 Academy</span>
+                        <span class="text-2xl font-black tracking-tight text-white leading-none">SIHAF</span>
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">K-12 Academy</span>
                     </div>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-600">
-                    <a href="#about" class="hover:text-indigo-600 transition-colors">Our Story</a>
-                    <a href="#curriculum" class="hover:text-indigo-600 transition-colors">Academics</a>
-                    <a href="#philanthropy" class="hover:text-indigo-600 transition-colors">Giving</a>
-                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-700 shadow-md hover:shadow-indigo-200 transition-all">Contact Us</a>
+                <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-300">
+                    <a href="#about" class="hover:text-white transition-colors">Our Story</a>
+                    <a href="#curriculum" class="hover:text-white transition-colors">Academics</a>
+                    <a href="#philanthropy" class="hover:text-white transition-colors">Giving</a>
+                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-500 shadow-md hover:shadow-indigo-500/30 transition-all">Contact Us</a>
                 </div>
 
-                <button class="md:hidden text-slate-900 text-2xl">
+                <button class="md:hidden text-white text-2xl">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden hero-gradient px-6">
-        <div class="absolute inset-0 opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden hero-gradient px-6 border-b border-slate-900">
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
         
         <div class="relative z-10 max-w-5xl text-center text-white">
-            <span class="inline-block py-1 px-4 rounded-full bg-white/10 border border-white/20 text-indigo-200 text-sm font-bold uppercase tracking-widest mb-6 animate-bounce">
+            <span class="inline-block py-1 px-4 rounded-full bg-indigo-950/50 border border-indigo-900 text-indigo-300 text-sm font-bold uppercase tracking-widest mb-6 animate-bounce">
                 Redefining Shreveport Education
             </span>
             <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[1.1]">
-                Nurturing <span class="text-gradient">Potential</span>, <br> Inspiring <span class="italic font-light">Purpose.</span>
+                Nurturing <span class="text-gradient-neon">Potential</span>, <br> Inspiring <span class="italic font-light text-slate-200">Purpose.</span>
             </h1>
-            <p class="text-lg md:text-xl text-indigo-100/80 mb-12 max-w-2xl mx-auto font-medium">
+            <p class="text-lg md:text-xl text-slate-300/90 mb-12 max-w-2xl mx-auto font-medium">
                 A non-profit K-12 institution where modern innovation meets timeless values. 100% focused on student growth, not profit.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#curriculum" class="px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-extrabold rounded-2xl shadow-xl transition-all hover:-translate-y-1">
+                <a href="#curriculum" class="px-10 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold rounded-2xl shadow-xl shadow-amber-950/30 transition-all hover:-translate-y-1">
                     Explore Curriculum
                 </a>
-                <a href="#philanthropy" class="px-10 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-extrabold rounded-2xl backdrop-blur-md transition-all">
+                <a href="#philanthropy" class="px-10 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-extrabold rounded-2xl backdrop-blur-md transition-all">
                     Support Our Mission
                 </a>
             </div>
         </div>
 
-        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl"></div>
-        <div class="absolute -top-12 -right-12 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-amber-900/10 rounded-full blur-3xl"></div>
+        <div class="absolute -top-12 -right-12 w-64 h-64 bg-indigo-950/10 rounded-full blur-3xl"></div>
     </section>
 
-    <section class="py-12 bg-white border-b border-slate-100">
+    <section class="py-12 bg-midnight border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="text-center">
-                <h3 class="text-4xl font-black text-indigo-600">12:1</h3>
+                <h3 class="text-4xl font-black text-indigo-400">12:1</h3>
                 <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Student Ratio</p>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <h3 class="text-4xl font-black text-indigo-600">100%</h3>
+            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
+                <h3 class="text-4xl font-black text-indigo-400">100%</h3>
                 <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">College Bound</p>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <h3 class="text-4xl font-black text-indigo-600">501c3</h3>
+            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
+                <h3 class="text-4xl font-black text-indigo-400">501c3</h3>
                 <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Non-Profit Status</p>
             </div>
-            <div class="text-center border-l border-slate-100">
-                <h3 class="text-4xl font-black text-indigo-600">20+</h3>
+            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
+                <h3 class="text-4xl font-black text-indigo-400">20+</h3>
                 <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Elective Tracks</p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 relative overflow-hidden">
-        <div class="blob top-20 left-10"></div>
+    <section id="about" class="py-32 bg-midnight relative overflow-hidden">
+        <div class="blob blob-primary top-20 left-10"></div>
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative group">
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-amber-400 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-700 to-amber-500 rounded-[2rem] blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
                     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
-                         class="relative rounded-[2rem] shadow-2xl z-10 grayscale-[20%] group-hover:grayscale-0 transition duration-500" alt="Students">
+                         class="relative rounded-[2rem] shadow-2xl z-10 grayscale-[50%] group-hover:grayscale-0 transition duration-500 border border-slate-800" alt="Students">
                 </div>
                 <div>
-                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
-                        Built for <span class="text-indigo-600">Students</span>,<br> Not for Shareholders.
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+                        Built for <span class="text-indigo-400">Students</span>,<br> Not for Shareholders.
                     </h2>
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    <p class="text-lg text-slate-300 mb-8 leading-relaxed">
                         At SIHAF, we believe high-quality education is a human right, not a luxury. As Shreveport's leading non-profit academy, every cent of tuition is funneled back into state-of-the-art labs, teacher salaries, and community outreach.
                     </p>
                     <div class="space-y-4">
-                        <div class="flex gap-4 p-4 rounded-2xl bg-white shadow-sm border border-slate-100">
-                            <div class="text-amber-500 text-xl"><i class="fas fa-heart"></i></div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-white/3 border border-white/5 shadow-inner">
+                            <div class="text-amber-400 text-xl"><i class="fas fa-heart"></i></div>
                             <div>
-                                <h4 class="font-extrabold text-slate-900">Holistic Care</h4>
-                                <p class="text-sm text-slate-500">Emotional intelligence integrated into every lesson.</p>
+                                <h4 class="font-extrabold text-white">Holistic Care</h4>
+                                <p class="text-sm text-slate-400">Emotional intelligence integrated into every lesson.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 p-4 rounded-2xl bg-white shadow-sm border border-slate-100">
-                            <div class="text-indigo-500 text-xl"><i class="fas fa-microchip"></i></div>
+                        <div class="flex gap-4 p-4 rounded-2xl bg-white/3 border border-white/5 shadow-inner">
+                            <div class="text-indigo-400 text-xl"><i class="fas fa-microchip"></i></div>
                             <div>
-                                <h4 class="font-extrabold text-slate-900">Future Ready</h4>
-                                <p class="text-sm text-slate-500">Coding and financial literacy from Grade 3.</p>
+                                <h4 class="font-extrabold text-white">Future Ready</h4>
+                                <p class="text-sm text-slate-400">Coding and financial literacy from Grade 3.</p>
                             </div>
                         </div>
                     </div>
@@ -179,112 +188,112 @@
         </div>
     </section>
 
-    <section id="curriculum" class="py-32 bg-slate-50">
+    <section id="curriculum" class="py-32 bg-slate-950/50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-black text-slate-900 mb-4">The Academic Path</h2>
-                <div class="h-2 w-24 bg-amber-500 mx-auto rounded-full"></div>
+                <h2 class="text-5xl font-black text-white mb-4">The Academic Path</h2>
+                <div class="h-2 w-24 bg-amber-400 mx-auto rounded-full"></div>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-[2.5rem] card-hover border border-slate-100">
-                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <div class="p-8 rounded-[2.5rem] card-hover">
+                    <div class="w-16 h-16 bg-indigo-950 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-indigo-900">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4">Primary Academy</h3>
-                    <p class="text-slate-500 mb-6">Focusing on "Discovery." Students learn through play, phonics excellence, and hands-on STEM experiments.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700 text-sm">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Singapore Math</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Foreign Language Intro</li>
+                    <h3 class="text-2xl font-black text-white mb-4">Primary Academy</h3>
+                    <p class="text-slate-400 mb-6">Focusing on "Discovery." Students learn through play, phonics excellence, and hands-on STEM experiments.</p>
+                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Singapore Math</li>
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Foreign Language Intro</li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-[2.5rem] card-hover border-t-4 border-t-amber-500 shadow-xl">
-                    <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <div class="p-8 rounded-[2.5rem] card-hover border-t-4 border-t-amber-400 shadow-xl shadow-amber-950/10">
+                    <div class="w-16 h-16 bg-amber-950/50 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-amber-900">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4">Intermediate Academy</h3>
-                    <p class="text-slate-500 mb-6">Focusing on "Independence." Middle schoolers begin specialized elective tracks in robotics and debate.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700 text-sm">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Logic & Ethics</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Robotics Labs</li>
+                    <h3 class="text-2xl font-black text-white mb-4">Intermediate Academy</h3>
+                    <p class="text-slate-400 mb-6">Focusing on "Independence." Middle schoolers begin specialized elective tracks in robotics and debate.</p>
+                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Logic & Ethics</li>
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Robotics Labs</li>
                     </ul>
                 </div>
 
-                <div class="bg-white p-8 rounded-[2.5rem] card-hover border border-slate-100">
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+                <div class="p-8 rounded-[2.5rem] card-hover">
+                    <div class="w-16 h-16 bg-emerald-950/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-emerald-900">
                         <i class="fas fa-university"></i>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4">Preparatory Academy</h3>
-                    <p class="text-slate-500 mb-6">Focusing on "Leadership." AP courses, Dual Enrollment, and Career Mentorship programs.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700 text-sm">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> SAT/ACT Intensive</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i> Internship Placements</li>
+                    <h3 class="text-2xl font-black text-white mb-4">Preparatory Academy</h3>
+                    <p class="text-slate-400 mb-6">Focusing on "Leadership." AP courses, Dual Enrollment, and Career Mentorship programs.</p>
+                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> SAT/ACT Intensive</li>
+                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Internship Placements</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="philanthropy" class="py-32 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+    <section id="philanthropy" class="py-32 bg-midnight text-white relative overflow-hidden border-t border-slate-900 border-b border-slate-900">
+        <div class="blob blob-secondary -top-20 right-10 opacity-10"></div>
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-5xl md:text-6xl font-black mb-12">Fueled by <span class="text-amber-500">Generosity.</span></h2>
-            <p class="text-xl text-slate-400 mb-16 leading-relaxed">Your support ensures that every child in Shreveport, regardless of their financial background, can access world-class education.</p>
+            <h2 class="text-5xl md:text-6xl font-black mb-12">Fueled by <span class="text-amber-400">Generosity.</span></h2>
+            <p class="text-xl text-slate-300 mb-16 leading-relaxed max-w-3xl mx-auto">Your support ensures that every child in Shreveport, regardless of their financial background, can access world-class education.</p>
             
             <div class="grid sm:grid-cols-3 gap-6 mb-16">
-                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
-                    <h4 class="text-4xl font-black text-amber-500 mb-2">$50</h4>
+                <div class="p-8 rounded-3xl bg-white/3 border border-white/5 backdrop-blur-md">
+                    <h4 class="text-4xl font-black text-amber-400 mb-2">$50</h4>
                     <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Classroom Supplies</p>
                 </div>
-                <div class="p-8 rounded-3xl bg-indigo-600 border border-indigo-500 shadow-2xl scale-110 z-20">
+                <div class="p-8 rounded-3xl bg-indigo-700 border border-indigo-600 shadow-2xl shadow-indigo-950/50 scale-110 z-20">
                     <h4 class="text-4xl font-black text-white mb-2">$250</h4>
-                    <p class="text-xs font-bold uppercase tracking-widest text-indigo-200">Scholarship Fund</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-indigo-100">Scholarship Fund</p>
                 </div>
-                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
-                    <h4 class="text-4xl font-black text-amber-500 mb-2">$1,000</h4>
+                <div class="p-8 rounded-3xl bg-white/3 border border-white/5 backdrop-blur-md">
+                    <h4 class="text-4xl font-black text-amber-400 mb-2">$1,000</h4>
                     <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Tech Lab Upgrade</p>
                 </div>
             </div>
             
-            <button class="px-12 py-5 bg-white text-slate-900 font-black text-xl rounded-full hover:bg-amber-400 hover:scale-105 transition-all shadow-2xl">
+            <button class="px-12 py-5 bg-white text-slate-950 font-black text-xl rounded-full hover:bg-amber-300 hover:scale-105 transition-all shadow-2xl shadow-indigo-950/30">
                 Donate via Secure Portal
             </button>
         </div>
     </section>
 
-    <footer id="contact" class="bg-white pt-32 pb-12 border-t border-slate-100">
+    <footer id="contact" class="bg-midnight pt-32 pb-12">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-20">
             <div class="col-span-2">
                 <div class="flex items-center gap-2 mb-8">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
                         <i class="fas fa-graduation-cap text-xl"></i>
                     </div>
-                    <span class="text-3xl font-black tracking-tight text-slate-900">SIHAF ACADEMY</span>
+                    <span class="text-3xl font-black tracking-tight text-white">SIHAF ACADEMY</span>
                 </div>
-                <p class="max-w-sm text-slate-500 font-medium leading-relaxed">
+                <p class="max-w-sm text-slate-400 font-medium leading-relaxed">
                     Building a legacy of integrity, wisdom, and community in the heart of Louisiana. Founded in 2018 as a non-profit beacon of light.
                 </p>
             </div>
             <div>
-                <h4 class="font-black text-slate-900 mb-6 uppercase tracking-widest text-sm">Location</h4>
-                <p class="text-slate-500 font-medium leading-relaxed">
+                <h4 class="font-black text-slate-200 mb-6 uppercase tracking-widest text-sm">Location</h4>
+                <p class="text-slate-400 font-medium leading-relaxed">
                     350 Hearne Ave<br>
                     Shreveport, LA 71103<br>
-                    (318) 555-0199
+                    <span class="text-yellow-400 font-bold">(318) 555-0199</span>
                 </p>
             </div>
             <div>
-                <h4 class="font-black text-slate-900 mb-6 uppercase tracking-widest text-sm">Connect</h4>
+                <h4 class="font-black text-slate-200 mb-6 uppercase tracking-widest text-sm">Connect</h4>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-indigo-600 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-indigo-400 hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-rose-500 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-indigo-400 hover:text-white hover:border-indigo-400 transition-all"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-rose-600 hover:text-white hover:border-rose-600 transition-all"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 border-t border-slate-100 pt-8 text-center">
-            <p class="text-slate-400 text-sm font-bold">&copy; 2026 SIHAF K-12 Academy. Registered 501(c)(3) Non-Profit.</p>
+        <div class="max-w-7xl mx-auto px-6 border-t border-slate-800 pt-8 text-center">
+            <p class="text-slate-500 text-sm font-bold">&copy; 2026 SIHAF K-12 Academy. Registered 501(c)(3) Non-Profit.</p>
         </div>
     </footer>
 
