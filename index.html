@@ -1,301 +1,2370 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIHAF K-12 | Shreveport's Premier Learning Academy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Outfit:wght@100;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #818cf8; /* Light Indigo */
-            --secondary: #fbbf24; /* Golden Rod */
-            --dark: #0f172a; /* Slate 900 */
-            --midnight: #020617; /* Slate 950 (Black) */
-        }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--midnight); color: #f1f5f9; }
-        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SIHAF K-12 Learning Academy – A 501(c)(3) nonprofit dedicated to empowering K-12 students through quality education, mentorship, and community support in Shreveport, Louisiana.">
+<meta name="keywords" content="SIHAF, K-12, nonprofit, education, Shreveport, Louisiana, tutoring, mentorship, learning academy">
+<meta property="og:title" content="SIHAF K-12 Learning Academy">
+<meta property="og:description" content="Empowering every child to reach their full potential through education, mentorship, and community.">
+<title>SIHAF K-12 Learning Academy | 501(c)(3) Nonprofit | Shreveport, LA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & ROOT ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #1565C0;
+    --blue-light: #1E88E5;
+    --blue-dark: #0D47A1;
+    --sky: #29B6F6;
+    --green: #2E7D32;
+    --green-light: #43A047;
+    --green-bright: #66BB6A;
+    --yellow: #F9A825;
+    --orange: #EF6C00;
+    --red: #C62828;
+    --purple: #6A1B9A;
+    --pink: #E91E63;
+    --teal: #00838F;
+    --white: #FFFFFF;
+    --light: #F4F7FB;
+    --gray: #607080;
+    --dark: #12243A;
+    --shadow: 0 8px 32px rgba(21,101,192,0.13);
+    --shadow-lg: 0 16px 48px rgba(21,101,192,0.18);
+    --radius: 18px;
+    --radius-sm: 10px;
+    --font-body: 'Nunito', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--dark); background: var(--white); overflow-x: hidden; }
+  body.dark { --white: #12243A; --light: #1a2e47; --dark: #e8f0fe; --gray: #90aac8; background: #0a1829; color: #e8f0fe; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.2; }
+  p { line-height: 1.8; color: var(--gray); }
 
-        /* Smooth Glassmorphism Header - Darkened */
-        .glass-nav {
-            background: rgba(2, 6, 23, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+  /* ===== PAGE SYSTEM ===== */
+  .page { display: none; }
+  .page.active { display: block; }
 
-        /* Animated Neon Gradient Background */
-        .hero-gradient {
-            background: linear-gradient(-45deg, #020617, #1e1b4b, #312e81, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
-        }
+  /* ===== NAVBAR ===== */
+  #navbar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 24px rgba(21,101,192,0.10);
+    transition: var(--transition);
+  }
+  body.dark #navbar { background: rgba(18,36,58,0.97); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; height: 72px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .nav-logo-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue), var(--sky));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; color: white;
+  }
+  .nav-logo-text { font-family: var(--font-display); font-size: 1.15rem; color: var(--blue-dark); line-height: 1.1; }
+  .nav-logo-text span { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; color: var(--green); letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 6px; }
+  .nav-links a {
+    padding: 7px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 700;
+    color: var(--dark); transition: var(--transition);
+  }
+  .nav-links a:hover, .nav-links a.active { background: var(--blue); color: white; }
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-donate-nav {
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    color: white; padding: 8px 20px; border-radius: 50px;
+    font-weight: 800; font-size: 0.88rem; border: none; cursor: pointer;
+    transition: var(--transition); box-shadow: 0 4px 16px rgba(239,108,0,0.3);
+  }
+  .btn-donate-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(239,108,0,0.4); }
+  .dark-toggle {
+    background: none; border: 2px solid var(--blue); border-radius: 50%;
+    width: 36px; height: 36px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition); color: var(--blue);
+  }
+  .dark-toggle:hover { background: var(--blue); color: white; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+  .hamburger span { width: 26px; height: 3px; background: var(--dark); border-radius: 2px; transition: var(--transition); display: block; }
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; width: 100%;
+    background: white; z-index: 999; padding: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1); flex-direction: column; gap: 4px;
+  }
+  body.dark .mobile-menu { background: #12243A; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 12px 16px; border-radius: 10px; font-weight: 700;
+    color: var(--dark); font-size: 1rem;
+  }
+  .mobile-menu a:hover { background: var(--light); }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; border-radius: 50px; font-weight: 800;
+    font-size: 1rem; border: none; cursor: pointer; transition: var(--transition);
+    font-family: var(--font-body);
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; box-shadow: 0 6px 24px rgba(21,101,192,0.35); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(21,101,192,0.45); }
+  .btn-secondary { background: linear-gradient(135deg, var(--green), var(--green-light)); color: white; box-shadow: 0 6px 24px rgba(46,125,50,0.35); }
+  .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(46,125,50,0.45); }
+  .btn-orange { background: linear-gradient(135deg, var(--orange), var(--yellow)); color: white; box-shadow: 0 6px 24px rgba(239,108,0,0.35); }
+  .btn-orange:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(239,108,0,0.45); }
+  .btn-outline { background: transparent; border: 2.5px solid white; color: white; }
+  .btn-outline:hover { background: white; color: var(--blue); }
 
-        /* Neon Text Gradient */
-        .text-gradient-neon {
-            background: linear-gradient(to right, #818cf8, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.5));
-        }
+  /* ===== SECTION COMMONS ===== */
+  .section { padding: 90px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: var(--blue); color: white;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); color: var(--dark); margin-bottom: 16px; }
+  .section-sub { font-size: 1.1rem; color: var(--gray); max-width: 640px; margin-bottom: 48px; }
+  .section-header { text-align: center; }
+  .section-header .section-sub { margin: 0 auto 48px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media(max-width:900px) { .grid-2 { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr 1fr; } .grid-4 { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:600px) { .grid-3 { grid-template-columns: 1fr; } .grid-4 { grid-template-columns: 1fr; } .nav-links { display: none; } .hamburger { display: flex; } .nav-actions .btn-donate-nav { display: none; } }
+  .card {
+    background: var(--white); border-radius: var(--radius); padding: 32px;
+    box-shadow: var(--shadow); transition: var(--transition);
+    border: 1.5px solid rgba(21,101,192,0.07);
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .tag-chip {
+    display: inline-block; padding: 4px 12px; border-radius: 50px;
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 1px;
+  }
 
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(129, 140, 248, 0.3);
-            border-color: rgba(129, 140, 248, 0.4);
-        }
+  /* ===== BACK TO TOP ===== */
+  #backTop {
+    position: fixed; bottom: 32px; right: 32px; z-index: 999;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--sky));
+    color: white; font-size: 20px; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(21,101,192,0.4);
+    opacity: 0; pointer-events: none; transition: var(--transition);
+  }
+  #backTop.show { opacity: 1; pointer-events: auto; }
+  #backTop:hover { transform: translateY(-4px); }
 
-        /* Dark Mode Blob Effects */
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.2;
-        }
-        .blob-primary { background: radial-gradient(circle, #818cf8 0%, rgba(2, 6, 23, 0) 70%); }
-        .blob-secondary { background: radial-gradient(circle, #fbbf24 0%, rgba(2, 6, 23, 0) 70%); }
-    </style>
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; position: relative; display: flex; align-items: center;
+    background: linear-gradient(135deg, #0D47A1 0%, #1565C0 40%, #0097A7 70%, #00838F 100%);
+    overflow: hidden; padding-top: 72px;
+  }
+  .hero-bg-shapes {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .hero-bg-shapes::before {
+    content: ''; position: absolute; width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    top: -200px; right: -200px; border-radius: 50%;
+  }
+  .hero-bg-shapes::after {
+    content: ''; position: absolute; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(249,168,37,0.15) 0%, transparent 70%);
+    bottom: -100px; left: -100px; border-radius: 50%;
+  }
+  .hero-floats { position: absolute; inset: 0; pointer-events: none; }
+  .hero-float {
+    position: absolute; border-radius: 50%; opacity: 0.15; animation: floatAnim 6s ease-in-out infinite;
+  }
+  .hero-float:nth-child(1) { width: 80px; height: 80px; background: var(--yellow); top: 15%; left: 8%; animation-delay: 0s; }
+  .hero-float:nth-child(2) { width: 50px; height: 50px; background: var(--green-bright); top: 60%; left: 4%; animation-delay: 1s; }
+  .hero-float:nth-child(3) { width: 100px; height: 100px; background: var(--sky); top: 25%; right: 10%; animation-delay: 2s; }
+  .hero-float:nth-child(4) { width: 60px; height: 60px; background: var(--pink); bottom: 20%; right: 6%; animation-delay: 0.5s; }
+  @keyframes floatAnim { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+  @media(max-width:900px) { .hero-inner { grid-template-columns: 1fr; text-align: center; } }
+  .hero-content { color: white; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25); border-radius: 50px;
+    padding: 8px 18px; font-size: 0.82rem; font-weight: 700; color: #FFE082;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 22px; color: white; }
+  .hero-title span { color: var(--yellow); }
+  .hero-desc { font-size: 1.18rem; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  @media(max-width:900px) { .hero-btns { justify-content: center; } }
+  .hero-stats { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+  @media(max-width:900px) { .hero-stats { justify-content: center; } }
+  .hero-stat { color: white; }
+  .hero-stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--yellow); }
+  .hero-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.7); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .hero-image-wrap { position: relative; }
+  .hero-image-card {
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255,255,255,0.2); border-radius: 24px;
+    padding: 12px; overflow: hidden;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 420px; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 2px dashed rgba(255,255,255,0.3); position: relative; overflow: hidden;
+  }
+  .hero-img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80') center/cover;
+    opacity: 0.5;
+  }
+  .hero-img-placeholder-text { position: relative; color: white; text-align: center; }
+  .hero-img-placeholder-text .icon { font-size: 3rem; margin-bottom: 8px; }
+  .hero-badge-float {
+    position: absolute; background: white; border-radius: 14px; padding: 12px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2); font-weight: 700; font-size: 0.85rem;
+    color: var(--dark); display: flex; align-items: center; gap: 8px;
+  }
+  .hero-badge-float.b1 { bottom: -20px; left: -20px; }
+  .hero-badge-float.b2 { top: -16px; right: -16px; }
+
+  /* ===== MISSION STRIP ===== */
+  .mission-strip {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    padding: 40px 24px; text-align: center; color: white;
+  }
+  .mission-strip p { font-size: 1.25rem; font-weight: 700; color: rgba(255,255,255,0.95); max-width: 800px; margin: 0 auto; }
+  .mission-strip p span { color: var(--yellow); }
+
+  /* ===== IMPACT STATS ===== */
+  .impact-section { background: var(--light); }
+  .stat-card {
+    background: white; border-radius: var(--radius); padding: 36px 24px;
+    text-align: center; box-shadow: var(--shadow); transition: var(--transition);
+    border-bottom: 4px solid transparent;
+  }
+  .stat-card:hover { transform: translateY(-6px); border-bottom-color: var(--blue); }
+  .stat-card:nth-child(1) { border-bottom-color: var(--blue); }
+  .stat-card:nth-child(2) { border-bottom-color: var(--green); }
+  .stat-card:nth-child(3) { border-bottom-color: var(--orange); }
+  .stat-card:nth-child(4) { border-bottom-color: var(--purple); }
+  .stat-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .stat-num { font-family: var(--font-display); font-size: 2.8rem; font-weight: 800; color: var(--dark); }
+  .stat-label { font-size: 0.9rem; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+
+  /* ===== PROGRAMS ===== */
+  .program-card {
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    transition: var(--transition); background: var(--white);
+  }
+  .program-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .program-img {
+    height: 220px; display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; position: relative; overflow: hidden;
+  }
+  .program-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+  .program-body { padding: 28px; }
+  .program-tag { margin-bottom: 10px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; }
+  .program-title { font-size: 1.25rem; margin-bottom: 10px; color: var(--dark); }
+  .program-desc { font-size: 0.9rem; margin-bottom: 18px; }
+  .program-meta { display: flex; gap: 16px; font-size: 0.82rem; font-weight: 700; color: var(--gray); }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--teal) 100%); }
+  .testimonials-section .section-title { color: white; }
+  .testimonials-section .section-sub { color: rgba(255,255,255,0.7); }
+  .testimonials-section .section-tag { background: rgba(255,255,255,0.2); color: white; }
+  .testi-card {
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius);
+    padding: 32px; color: white; transition: var(--transition);
+  }
+  .testi-card:hover { background: rgba(255,255,255,0.18); transform: translateY(-4px); }
+  .testi-quote { font-size: 2.5rem; color: var(--yellow); line-height: 1; margin-bottom: 14px; }
+  .testi-text { font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.9); margin-bottom: 22px; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid rgba(255,255,255,0.3); }
+  .testi-name { font-weight: 800; font-size: 0.95rem; }
+  .testi-role { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+  .testi-stars { color: var(--yellow); font-size: 0.85rem; margin-bottom: 4px; }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--yellow) 100%);
+    text-align: center; padding: 100px 24px;
+  }
+  .cta-section h2 { color: white; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 18px; }
+  .cta-section p { color: rgba(255,255,255,0.9); font-size: 1.15rem; max-width: 600px; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== PARTNERS ===== */
+  .partners-section { background: var(--light); }
+  .partner-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; margin-top: 40px; }
+  .partner-logo {
+    background: white; border-radius: 14px; padding: 22px 36px;
+    font-weight: 800; color: var(--gray); font-size: 1rem;
+    box-shadow: var(--shadow); transition: var(--transition); min-width: 150px; text-align: center;
+  }
+  .partner-logo:hover { box-shadow: var(--shadow-lg); color: var(--blue); transform: translateY(-3px); }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-section { background: var(--blue); padding: 80px 24px; text-align: center; }
+  .newsletter-section h2 { color: white; font-size: 2.2rem; margin-bottom: 12px; }
+  .newsletter-section p { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 1.05rem; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .newsletter-form input {
+    flex: 1; min-width: 220px; padding: 14px 22px; border-radius: 50px;
+    border: none; font-size: 1rem; outline: none; font-family: var(--font-body);
+  }
+  .newsletter-form button {
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    color: white; border: none; padding: 14px 28px; border-radius: 50px;
+    font-weight: 800; font-size: 1rem; cursor: pointer; transition: var(--transition);
+    font-family: var(--font-body);
+  }
+  .newsletter-form button:hover { transform: scale(1.05); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark); color: white; padding: 70px 24px 30px;
+  }
+  body.dark footer { background: #0a1829; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:600px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand p { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.7; margin-top: 14px; margin-bottom: 20px; max-width: 280px; }
+  .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+  .social-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: var(--transition); cursor: pointer; color: white;
+  }
+  .social-icon:hover { background: var(--blue); }
+  .footer-col h4 { font-family: var(--font-body); font-weight: 800; font-size: 0.9rem; color: white; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 18px; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); font-size: 0.9rem; transition: var(--transition); cursor: pointer; }
+  .footer-col ul li a:hover { color: var(--sky); }
+  .footer-contact-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+  .footer-contact-item .icon { color: var(--sky); margin-top: 2px; flex-shrink: 0; }
+  .footer-contact-item span { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.6; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: gap-wrap; gap: 16px;
+  }
+  .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.83rem; }
+  .footer-bottom-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .footer-bottom-links a { color: rgba(255,255,255,0.4); font-size: 0.83rem; transition: var(--transition); cursor: pointer; }
+  .footer-bottom-links a:hover { color: var(--sky); }
+  .footer-ein { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 18px; margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .footer-ein span { color: var(--green-bright); font-weight: 700; }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-hero { background: linear-gradient(135deg, #1A237E, #283593, #1565C0); padding: 130px 24px 80px; text-align: center; color: white; }
+  .about-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); color: white; margin-bottom: 16px; }
+  .about-hero p { font-size: 1.15rem; color: rgba(255,255,255,0.8); max-width: 620px; margin: 0 auto; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media(max-width:700px) { .values-grid { grid-template-columns: 1fr 1fr; } }
+  .value-card {
+    border-radius: var(--radius); padding: 30px 24px; text-align: center;
+    transition: var(--transition); border: 2px solid transparent;
+  }
+  .value-card:hover { transform: translateY(-6px); border-color: currentColor; }
+  .value-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .value-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; font-family: var(--font-body); }
+  .value-desc { font-size: 0.88rem; color: var(--gray); }
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--blue), var(--sky)); border-radius: 2px; }
+  .timeline-item { position: relative; margin-bottom: 40px; }
+  .timeline-dot { position: absolute; left: -32px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); border: 3px solid white; box-shadow: 0 0 0 3px var(--blue); }
+  .timeline-year { font-size: 0.8rem; font-weight: 800; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .timeline-title { font-family: var(--font-body); font-size: 1.1rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .timeline-text { font-size: 0.9rem; color: var(--gray); }
+  .team-card { text-align: center; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--white); transition: var(--transition); }
+  .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .team-avatar { height: 200px; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: rgba(255,255,255,0.7); }
+  .team-body { padding: 22px; }
+  .team-name { font-size: 1.15rem; font-weight: 800; font-family: var(--font-body); color: var(--dark); margin-bottom: 4px; }
+  .team-role { font-size: 0.82rem; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .team-bio { font-size: 0.88rem; color: var(--gray); }
+
+  /* ===== PROGRAMS PAGE ===== */
+  .programs-hero { background: linear-gradient(135deg, var(--green-dark, #1B5E20), var(--green)); padding: 130px 24px 80px; text-align: center; color: white; }
+  .programs-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .programs-hero p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .program-full {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    padding: 60px 0; border-bottom: 1px solid rgba(21,101,192,0.08);
+  }
+  .program-full:last-child { border-bottom: none; }
+  @media(max-width:800px) { .program-full { grid-template-columns: 1fr; } }
+  .program-full.reverse .program-full-img { order: -1; }
+  @media(max-width:800px) { .program-full.reverse .program-full-img { order: 0; } }
+  .program-full-img {
+    border-radius: var(--radius); height: 320px;
+    display: flex; align-items: center; justify-content: center; font-size: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .program-impact { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+  .impact-pill { background: var(--light); border-radius: 50px; padding: 8px 18px; font-size: 0.85rem; font-weight: 700; color: var(--dark); }
+
+  /* ===== DONATE PAGE ===== */
+  .donate-hero { background: linear-gradient(135deg, var(--orange), var(--yellow)); padding: 130px 24px 80px; text-align: center; color: white; }
+  .donate-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .donate-hero p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .donate-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; margin-top: 60px; }
+  @media(max-width:900px) { .donate-grid { grid-template-columns: 1fr; } }
+  .donate-form-card { background: white; border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow-lg); }
+  body.dark .donate-form-card { background: #1a2e47; }
+  .donate-type-btns { display: flex; gap: 8px; margin-bottom: 24px; }
+  .type-btn {
+    flex: 1; padding: 12px; border-radius: 10px; border: 2px solid rgba(21,101,192,0.2);
+    background: var(--light); font-weight: 700; cursor: pointer; transition: var(--transition);
+    font-family: var(--font-body); font-size: 0.95rem; color: var(--gray);
+  }
+  .type-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+  .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .amount-btn {
+    padding: 14px; border-radius: 10px; border: 2px solid rgba(21,101,192,0.15);
+    background: var(--light); font-weight: 800; font-size: 1.1rem; cursor: pointer;
+    transition: var(--transition); font-family: var(--font-body); color: var(--dark);
+  }
+  .amount-btn:hover, .amount-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 13px 16px; border-radius: 10px;
+    border: 2px solid rgba(21,101,192,0.15); font-size: 1rem; outline: none;
+    font-family: var(--font-body); transition: var(--transition); background: var(--white); color: var(--dark);
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(21,101,192,0.1); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .donate-info-card { background: linear-gradient(135deg, var(--blue-dark), var(--blue)); border-radius: var(--radius); padding: 36px; color: white; }
+  .donate-info-item { display: flex; gap: 14px; margin-bottom: 24px; align-items: flex-start; }
+  .donate-info-icon { width: 46px; height: 46px; border-radius: 12px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .donate-info-text h4 { font-family: var(--font-body); font-weight: 800; margin-bottom: 4px; color: white; }
+  .donate-info-text p { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .progress-bar-wrap { background: rgba(255,255,255,0.15); border-radius: 50px; height: 12px; margin: 20px 0 8px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; border-radius: 50px; background: linear-gradient(135deg, var(--green-bright), var(--yellow)); width: 68%; transition: var(--transition); }
+  .impact-breakdown { margin-top: 32px; }
+  .impact-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .impact-row:last-child { border-bottom: none; }
+  .impact-row-left { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  .impact-row-right { font-weight: 800; color: var(--yellow); }
+
+  /* ===== VOLUNTEER PAGE ===== */
+  .volunteer-hero { background: linear-gradient(135deg, #4A148C, #6A1B9A, #AB47BC); padding: 130px 24px 80px; text-align: center; color: white; }
+  .volunteer-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .volunteer-hero p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .vol-opportunity { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--white); display: flex; transition: var(--transition); }
+  @media(max-width:700px) { .vol-opportunity { flex-direction: column; } }
+  .vol-opportunity:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .vol-opp-accent { width: 8px; flex-shrink: 0; }
+  .vol-opp-body { padding: 28px; flex: 1; }
+  .vol-opp-title { font-size: 1.2rem; font-weight: 800; font-family: var(--font-body); color: var(--dark); margin-bottom: 8px; }
+  .vol-opp-desc { font-size: 0.9rem; color: var(--gray); margin-bottom: 14px; }
+  .vol-opp-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .vol-opp-chip { padding: 4px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; background: var(--light); color: var(--dark); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media(max-width:700px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  .benefit-card { text-align: center; padding: 28px 20px; border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+  .benefit-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .benefit-title { font-weight: 800; font-size: 1rem; font-family: var(--font-body); color: var(--dark); margin-bottom: 6px; }
+  .benefit-desc { font-size: 0.85rem; color: var(--gray); }
+
+  /* ===== BLOG PAGE ===== */
+  .blog-hero { background: linear-gradient(135deg, #BF360C, #E64A19, #FF7043); padding: 130px 24px 80px; text-align: center; color: white; }
+  .blog-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .blog-hero p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .blog-card { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); transition: var(--transition); }
+  .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .blog-img { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+  .blog-body { padding: 24px; }
+  .blog-cat { font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .blog-title { font-size: 1.1rem; margin-bottom: 10px; color: var(--dark); line-height: 1.3; }
+  .blog-excerpt { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; }
+  .blog-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--gray); }
+  .blog-author { display: flex; align-items: center; gap: 8px; }
+  .blog-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: 700; }
+  .blog-categories { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+  .blog-cat-btn { padding: 8px 18px; border-radius: 50px; border: 2px solid rgba(21,101,192,0.2); background: var(--white); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: var(--transition); font-family: var(--font-body); color: var(--dark); }
+  .blog-cat-btn:hover, .blog-cat-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+  /* ===== CONTACT PAGE ===== */
+  .contact-hero { background: linear-gradient(135deg, #004D40, #00695C, #00897B); padding: 130px 24px 80px; text-align: center; color: white; }
+  .contact-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .contact-hero p { color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+  @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info-card { background: linear-gradient(135deg, var(--teal), #006064); border-radius: var(--radius); padding: 36px; color: white; }
+  .contact-info-item { display: flex; gap: 16px; margin-bottom: 28px; align-items: flex-start; }
+  .contact-info-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .contact-info-text h4 { font-family: var(--font-body); font-weight: 800; color: white; margin-bottom: 4px; }
+  .contact-info-text p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+  .map-placeholder { width: 100%; height: 220px; background: rgba(255,255,255,0.1); border-radius: 14px; margin-top: 20px; display: flex; align-items: center; justify-content: center; border: 1.5px dashed rgba(255,255,255,0.3); font-size: 1.8rem; }
+  .social-grid { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .social-btn { padding: 10px 18px; border-radius: 10px; background: rgba(255,255,255,0.12); color: white; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: var(--transition); }
+  .social-btn:hover { background: rgba(255,255,255,0.25); }
+
+  /* ===== FAQ PAGE ===== */
+  .faq-hero { background: linear-gradient(135deg, #E65100, #EF6C00, #FF8F00); padding: 130px 24px 80px; text-align: center; color: white; }
+  .faq-hero h1 { color: white; font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .faq-hero p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+  .faq-category { margin-bottom: 48px; }
+  .faq-category-title { font-size: 1.5rem; color: var(--blue); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid rgba(21,101,192,0.15); }
+  .faq-item { border-radius: var(--radius-sm); border: 1.5px solid rgba(21,101,192,0.1); margin-bottom: 12px; overflow: hidden; background: var(--white); }
+  .faq-question {
+    padding: 18px 22px; font-weight: 700; font-size: 1rem; color: var(--dark);
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    transition: var(--transition);
+  }
+  .faq-question:hover { background: var(--light); }
+  .faq-answer { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+  .faq-answer.open { padding: 0 22px 18px; max-height: 600px; }
+  .faq-answer p { font-size: 0.92rem; color: var(--gray); line-height: 1.7; }
+  .faq-icon { font-size: 1.2rem; color: var(--blue); transition: var(--transition); }
+  .faq-icon.rotate { transform: rotate(180deg); }
+
+  /* ===== POLICY PAGES ===== */
+  .policy-hero { background: linear-gradient(135deg, #37474F, #546E7A, #78909C); padding: 130px 24px 80px; text-align: center; color: white; }
+  .policy-hero h1 { color: white; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 12px; }
+  .policy-hero p { color: rgba(255,255,255,0.8); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+  .policy-content { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+  .policy-content h2 { font-size: 1.5rem; color: var(--blue); margin-top: 40px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid rgba(21,101,192,0.12); }
+  .policy-content h3 { font-size: 1.15rem; color: var(--dark); margin-top: 22px; margin-bottom: 10px; font-family: var(--font-body); font-weight: 800; }
+  .policy-content p { margin-bottom: 14px; font-size: 0.95rem; line-height: 1.8; }
+  .policy-content ul { margin-left: 24px; margin-bottom: 14px; list-style: disc; }
+  .policy-content ul li { margin-bottom: 8px; font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
+  .policy-content ol { margin-left: 24px; margin-bottom: 14px; list-style: decimal; }
+  .policy-content ol li { margin-bottom: 8px; font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
+  .policy-meta { background: var(--light); border-radius: var(--radius-sm); padding: 18px 22px; margin-bottom: 32px; font-size: 0.88rem; color: var(--gray); border-left: 4px solid var(--blue); }
+  .policy-toc { background: var(--light); border-radius: var(--radius-sm); padding: 22px 26px; margin-bottom: 36px; }
+  .policy-toc h4 { font-family: var(--font-body); font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .policy-toc ol { list-style: decimal; margin-left: 20px; }
+  .policy-toc ol li { margin-bottom: 6px; }
+  .policy-toc ol li a { color: var(--blue); font-size: 0.9rem; }
+
+  /* ===== RESPONSIVE NAV ===== */
+  @media(max-width:1080px) { .nav-links a { padding: 7px 10px; font-size: 0.82rem; } }
+  @media(max-width:960px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  /* ===== MISC ===== */
+  .section-divider { height: 4px; background: linear-gradient(to right, var(--blue), var(--sky), var(--green-bright), var(--yellow)); }
+  .highlight-box { background: linear-gradient(135deg, rgba(21,101,192,0.07), rgba(0,131,143,0.07)); border-radius: var(--radius); padding: 32px; border: 1.5px solid rgba(21,101,192,0.12); }
+  .badge-501c3 { display: inline-flex; align-items: center; gap: 8px; background: rgba(46,125,50,0.1); border: 1.5px solid var(--green); border-radius: 50px; padding: 8px 18px; font-size: 0.85rem; font-weight: 700; color: var(--green); }
+  .text-blue { color: var(--blue); }
+  .text-green { color: var(--green); }
+  .text-orange { color: var(--orange); }
+  .mb-0 { margin-bottom: 0 !important; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+  .text-center { text-align: center; }
+  .fw-800 { font-weight: 800; }
+  .toast { position: fixed; bottom: 90px; right: 32px; background: var(--green); color: white; padding: 14px 24px; border-radius: 12px; font-weight: 700; z-index: 9999; box-shadow: 0 8px 32px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+  .toast.show { opacity: 1; pointer-events: auto; }
+
+  /* ===== HOME: ABOUT STRIP ===== */
+  .about-strip { background: var(--white); }
+  .about-strip-text h2 { margin-bottom: 18px; }
+  .about-strip-text p { margin-bottom: 16px; }
+  .about-strip-text .btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+  .about-strip-img { border-radius: var(--radius); overflow: hidden; height: 400px; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 6rem; color: rgba(255,255,255,0.5); position: relative; }
+  .about-strip-img::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=700&q=80') center/cover; opacity: 0.55; }
+
+  /* ===== HOME: HOW IT WORKS ===== */
+  .steps-section { background: var(--light); }
+  .step-card { text-align: center; padding: 36px 24px; border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); position: relative; }
+  .step-num { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; font-size: 1.4rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-family: var(--font-display); box-shadow: 0 6px 20px rgba(21,101,192,0.3); }
+  .step-title { font-size: 1.15rem; font-weight: 800; font-family: var(--font-body); color: var(--dark); margin-bottom: 10px; }
+  .step-desc { font-size: 0.9rem; color: var(--gray); }
+
+  /* Annual Report */
+  .report-card { border-radius: var(--radius); padding: 28px; background: var(--white); box-shadow: var(--shadow); display: flex; align-items: center; gap: 20px; transition: var(--transition); }
+  .report-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .report-icon { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: white; flex-shrink: 0; }
+  .report-info h4 { font-family: var(--font-body); font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .report-info p { font-size: 0.85rem; color: var(--gray); }
+  .report-download { margin-left: auto; background: var(--light); border: none; border-radius: 10px; padding: 10px 18px; font-weight: 700; font-size: 0.85rem; cursor: pointer; color: var(--blue); transition: var(--transition); font-family: var(--font-body); }
+  .report-download:hover { background: var(--blue); color: white; }
+</style>
 </head>
-<body class="selection:bg-indigo-900 selection:text-indigo-200">
+<body>
 
-    <div class="bg-indigo-950 text-indigo-200 text-center py-2.5 text-sm font-semibold tracking-wide border-b border-indigo-900">
-        🚀 Now enrolling for the 2026-2027 Academic Year! <span class="underline ml-2 cursor-pointer text-yellow-400">Inquire Now</span>
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <div class="nav-logo-icon">🎓</div>
+      <div class="nav-logo-text">SIHAF K-12<span>Learning Academy</span></div>
     </div>
+    <div class="nav-links">
+      <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+      <a onclick="showPage('about')" id="nav-about">About</a>
+      <a onclick="showPage('programs')" id="nav-programs">Programs</a>
+      <a onclick="showPage('donate')" id="nav-donate">Donate</a>
+      <a onclick="showPage('volunteer')" id="nav-volunteer">Volunteer</a>
+      <a onclick="showPage('blog')" id="nav-blog">News</a>
+      <a onclick="showPage('contact')" id="nav-contact">Contact</a>
+      <a onclick="showPage('faq')" id="nav-faq">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <button class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</button>
+      <button class="btn-donate-nav" onclick="showPage('donate')">❤️ Donate</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage('home');closeMobile()">🏠 Home</a>
+  <a onclick="showPage('about');closeMobile()">👥 About Us</a>
+  <a onclick="showPage('programs');closeMobile()">📚 Programs</a>
+  <a onclick="showPage('donate');closeMobile()">❤️ Donate</a>
+  <a onclick="showPage('volunteer');closeMobile()">🤝 Volunteer</a>
+  <a onclick="showPage('blog');closeMobile()">📰 News & Blog</a>
+  <a onclick="showPage('contact');closeMobile()">📞 Contact</a>
+  <a onclick="showPage('faq');closeMobile()">❓ FAQ</a>
+</div>
 
-    <nav class="sticky top-0 z-[100] glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2 group cursor-pointer">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover:rotate-12 transition-transform">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-2xl font-black tracking-tight text-white leading-none">SIHAF</span>
-                        <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">K-12 Academy</span>
-                    </div>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8 font-semibold text-slate-300">
-                    <a href="#about" class="hover:text-white transition-colors">Our Story</a>
-                    <a href="#curriculum" class="hover:text-white transition-colors">Academics</a>
-                    <a href="#philanthropy" class="hover:text-white transition-colors">Giving</a>
-                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-500 shadow-md hover:shadow-indigo-500/30 transition-all">Contact Us</a>
-                </div>
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Message sent successfully!</div>
 
-                <button class="md:hidden text-white text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+<!-- ============================
+     HOME PAGE
+============================ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-shapes"></div>
+    <div class="hero-floats">
+      <div class="hero-float"></div>
+      <div class="hero-float"></div>
+      <div class="hero-float"></div>
+      <div class="hero-float"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">⭐ 501(c)(3) Certified Nonprofit — EIN: 47-1775962</div>
+        <h1 class="hero-title">Empowering Every Child to <span>Reach Their Full Potential</span></h1>
+        <p class="hero-desc">SIHAF K-12 Learning Academy is dedicated to transforming K-12 education in Shreveport, Louisiana through innovative programs, compassionate mentorship, and a community rooted in love for learning.</p>
+        <div class="hero-btns">
+          <button class="btn btn-orange" onclick="showPage('donate')">❤️ Donate Now</button>
+          <button class="btn btn-outline" onclick="showPage('volunteer')">🤝 Get Involved</button>
         </div>
-    </nav>
-
-    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden hero-gradient px-6 border-b border-slate-900">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
-        
-        <div class="relative z-10 max-w-5xl text-center text-white">
-            <span class="inline-block py-1 px-4 rounded-full bg-indigo-950/50 border border-indigo-900 text-indigo-300 text-sm font-bold uppercase tracking-widest mb-6 animate-bounce">
-                Redefining Shreveport Education
-            </span>
-            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[1.1]">
-                Nurturing <span class="text-gradient-neon">Potential</span>, <br> Inspiring <span class="italic font-light text-slate-200">Purpose.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-300/90 mb-12 max-w-2xl mx-auto font-medium">
-                A non-profit K-12 institution where modern innovation meets timeless values. 100% focused on student growth, not profit.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#curriculum" class="px-10 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold rounded-2xl shadow-xl shadow-amber-950/30 transition-all hover:-translate-y-1">
-                    Explore Curriculum
-                </a>
-                <a href="#philanthropy" class="px-10 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-extrabold rounded-2xl backdrop-blur-md transition-all">
-                    Support Our Mission
-                </a>
-            </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">1,200+</div>
+            <div class="hero-stat-label">Students Served</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">96%</div>
+            <div class="hero-stat-label">Grade Improvement</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">$480K</div>
+            <div class="hero-stat-label">Scholarships Awarded</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">8+</div>
+            <div class="hero-stat-label">Years of Impact</div>
+          </div>
         </div>
-
-        <div class="absolute -bottom-12 -left-12 w-64 h-64 bg-amber-900/10 rounded-full blur-3xl"></div>
-        <div class="absolute -top-12 -right-12 w-64 h-64 bg-indigo-950/10 rounded-full blur-3xl"></div>
-    </section>
-
-    <section class="py-12 bg-midnight border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center">
-                <h3 class="text-4xl font-black text-indigo-400">12:1</h3>
-                <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Student Ratio</p>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image-card">
+          <div class="hero-img-placeholder">
+            <div class="hero-img-placeholder-text">
+              <div class="icon">🎓</div>
+              <div style="font-weight:800;font-size:1.1rem;color:white;">Shaping Tomorrow's Leaders</div>
             </div>
-            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
-                <h3 class="text-4xl font-black text-indigo-400">100%</h3>
-                <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">College Bound</p>
-            </div>
-            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
-                <h3 class="text-4xl font-black text-indigo-400">501c3</h3>
-                <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Non-Profit Status</p>
-            </div>
-            <div class="text-center border-l border-slate-900 lg:border-l-slate-800">
-                <h3 class="text-4xl font-black text-indigo-400">20+</h3>
-                <p class="text-slate-500 font-bold text-xs uppercase tracking-tighter">Elective Tracks</p>
-            </div>
+          </div>
         </div>
-    </section>
+        <div class="hero-badge-float b1">🌟 Top Rated Nonprofit</div>
+        <div class="hero-badge-float b2">✅ IRS Approved 501(c)(3)</div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="py-32 bg-midnight relative overflow-hidden">
-        <div class="blob blob-primary top-20 left-10"></div>
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-700 to-amber-500 rounded-[2rem] blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
-                         class="relative rounded-[2rem] shadow-2xl z-10 grayscale-[50%] group-hover:grayscale-0 transition duration-500 border border-slate-800" alt="Students">
-                </div>
-                <div>
-                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
-                        Built for <span class="text-indigo-400">Students</span>,<br> Not for Shareholders.
-                    </h2>
-                    <p class="text-lg text-slate-300 mb-8 leading-relaxed">
-                        At SIHAF, we believe high-quality education is a human right, not a luxury. As Shreveport's leading non-profit academy, every cent of tuition is funneled back into state-of-the-art labs, teacher salaries, and community outreach.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex gap-4 p-4 rounded-2xl bg-white/3 border border-white/5 shadow-inner">
-                            <div class="text-amber-400 text-xl"><i class="fas fa-heart"></i></div>
-                            <div>
-                                <h4 class="font-extrabold text-white">Holistic Care</h4>
-                                <p class="text-sm text-slate-400">Emotional intelligence integrated into every lesson.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 p-4 rounded-2xl bg-white/3 border border-white/5 shadow-inner">
-                            <div class="text-indigo-400 text-xl"><i class="fas fa-microchip"></i></div>
-                            <div>
-                                <h4 class="font-extrabold text-white">Future Ready</h4>
-                                <p class="text-sm text-slate-400">Coding and financial literacy from Grade 3.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- MISSION STRIP -->
+  <div class="mission-strip">
+    <p>Our mission is to <span>educate, inspire, and uplift</span> every K-12 student in our community — regardless of background — by providing access to quality academic support, mentorship, and life skills development.</p>
+  </div>
+
+  <!-- IMPACT STATS -->
+  <section class="section impact-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Our Impact</div>
+        <h2 class="section-title">Numbers That Tell Our Story</h2>
+        <p class="section-sub">Every statistic represents a real child, a real family, and a real future changed through education and community support.</p>
+      </div>
+      <div class="grid-4">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-num">1,200+</div>
+          <div class="stat-label">Students Enrolled</div>
         </div>
-    </section>
-
-    <section id="curriculum" class="py-32 bg-slate-950/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-black text-white mb-4">The Academic Path</h2>
-                <div class="h-2 w-24 bg-amber-400 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-[2.5rem] card-hover">
-                    <div class="w-16 h-16 bg-indigo-950 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-indigo-900">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-white mb-4">Primary Academy</h3>
-                    <p class="text-slate-400 mb-6">Focusing on "Discovery." Students learn through play, phonics excellence, and hands-on STEM experiments.</p>
-                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Singapore Math</li>
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Foreign Language Intro</li>
-                    </ul>
-                </div>
-
-                <div class="p-8 rounded-[2.5rem] card-hover border-t-4 border-t-amber-400 shadow-xl shadow-amber-950/10">
-                    <div class="w-16 h-16 bg-amber-950/50 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-amber-900">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-white mb-4">Intermediate Academy</h3>
-                    <p class="text-slate-400 mb-6">Focusing on "Independence." Middle schoolers begin specialized elective tracks in robotics and debate.</p>
-                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Logic & Ethics</li>
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Robotics Labs</li>
-                    </ul>
-                </div>
-
-                <div class="p-8 rounded-[2.5rem] card-hover">
-                    <div class="w-16 h-16 bg-emerald-950/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-emerald-900">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-white mb-4">Preparatory Academy</h3>
-                    <p class="text-slate-400 mb-6">Focusing on "Leadership." AP courses, Dual Enrollment, and Career Mentorship programs.</p>
-                    <ul class="space-y-3 font-semibold text-slate-300 text-sm">
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> SAT/ACT Intensive</li>
-                        <li><i class="fas fa-check text-emerald-400 mr-2"></i> Internship Placements</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="stat-card">
+          <div class="stat-icon">👨‍🏫</div>
+          <div class="stat-num">85+</div>
+          <div class="stat-label">Volunteer Educators</div>
         </div>
-    </section>
-
-    <section id="philanthropy" class="py-32 bg-midnight text-white relative overflow-hidden border-t border-slate-900 border-b border-slate-900">
-        <div class="blob blob-secondary -top-20 right-10 opacity-10"></div>
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-5xl md:text-6xl font-black mb-12">Fueled by <span class="text-amber-400">Generosity.</span></h2>
-            <p class="text-xl text-slate-300 mb-16 leading-relaxed max-w-3xl mx-auto">Your support ensures that every child in Shreveport, regardless of their financial background, can access world-class education.</p>
-            
-            <div class="grid sm:grid-cols-3 gap-6 mb-16">
-                <div class="p-8 rounded-3xl bg-white/3 border border-white/5 backdrop-blur-md">
-                    <h4 class="text-4xl font-black text-amber-400 mb-2">$50</h4>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Classroom Supplies</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-indigo-700 border border-indigo-600 shadow-2xl shadow-indigo-950/50 scale-110 z-20">
-                    <h4 class="text-4xl font-black text-white mb-2">$250</h4>
-                    <p class="text-xs font-bold uppercase tracking-widest text-indigo-100">Scholarship Fund</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-white/3 border border-white/5 backdrop-blur-md">
-                    <h4 class="text-4xl font-black text-amber-400 mb-2">$1,000</h4>
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Tech Lab Upgrade</p>
-                </div>
-            </div>
-            
-            <button class="px-12 py-5 bg-white text-slate-950 font-black text-xl rounded-full hover:bg-amber-300 hover:scale-105 transition-all shadow-2xl shadow-indigo-950/30">
-                Donate via Secure Portal
-            </button>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-num">320+</div>
+          <div class="stat-label">Scholarships Given</div>
         </div>
-    </section>
+        <div class="stat-card">
+          <div class="stat-icon">🌟</div>
+          <div class="stat-num">96%</div>
+          <div class="stat-label">Student Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer id="contact" class="bg-midnight pt-32 pb-12">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-20">
-            <div class="col-span-2">
-                <div class="flex items-center gap-2 mb-8">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                        <i class="fas fa-graduation-cap text-xl"></i>
-                    </div>
-                    <span class="text-3xl font-black tracking-tight text-white">SIHAF ACADEMY</span>
-                </div>
-                <p class="max-w-sm text-slate-400 font-medium leading-relaxed">
-                    Building a legacy of integrity, wisdom, and community in the heart of Louisiana. Founded in 2018 as a non-profit beacon of light.
-                </p>
+  <div class="section-divider"></div>
+
+  <!-- ABOUT STRIP -->
+  <section class="section about-strip">
+    <div class="section-inner">
+      <div class="grid-2">
+        <div class="about-strip-text">
+          <div class="section-tag">Who We Are</div>
+          <h2 class="section-title">A Community Built on Education & Hope</h2>
+          <p>Founded in Shreveport, Louisiana, SIHAF K-12 Learning Academy began as a small after-school program serving a handful of students in the heart of the city. Today, we have grown into a full-service nonprofit educational organization supporting K-12 students across the Shreveport-Bossier metro area.</p>
+          <p>We believe every child deserves access to high-quality educational resources, positive role models, and a safe, nurturing environment where they can thrive academically and personally. Our programs address the whole child — academics, emotional wellness, life skills, and character development.</p>
+          <p>As a federally recognized 501(c)(3) organization (EIN: 47-1775962), all donations to SIHAF K-12 Learning Academy are tax-deductible to the fullest extent allowed by law. We are committed to transparency, accountability, and maximizing the impact of every dollar we receive.</p>
+          <div class="btns">
+            <button class="btn btn-primary" onclick="showPage('about')">Learn Our Story</button>
+            <button class="btn btn-secondary" onclick="showPage('programs')">Our Programs</button>
+          </div>
+        </div>
+        <div class="about-strip-img">
+          <span style="position:relative;z-index:1">🏫</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section steps-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">How We Work</div>
+        <h2 class="section-title">Our Approach to Student Success</h2>
+        <p class="section-sub">We use a proven, holistic model that meets each student where they are and empowers them to grow academically, socially, and emotionally.</p>
+      </div>
+      <div class="grid-4">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-title">Assess & Identify</div>
+          <div class="step-desc">We begin with a comprehensive academic and social-emotional assessment to understand each student's unique strengths and areas for growth.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-title">Personalize Learning</div>
+          <div class="step-desc">Our educators design a personalized learning plan with targeted tutoring, mentorship, and enrichment activities tailored to each student.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-title">Support & Mentor</div>
+          <div class="step-desc">Caring adult mentors provide consistent guidance, encouragement, and real-world life skills coaching throughout the student's journey.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-title">Celebrate & Advance</div>
+          <div class="step-desc">We celebrate every milestone and connect students to scholarships, college prep, and career pathways for a bright future.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROGRAMS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Programs & Services</div>
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-sub">From after-school tutoring to STEM enrichment and college readiness, our programs are designed to unlock every student's potential.</p>
+      </div>
+      <div class="grid-3">
+        <div class="program-card">
+          <div class="program-img" style="background: linear-gradient(135deg, #1565C0, #1E88E5);">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=70" alt="Tutoring program students learning">
+            📖
+          </div>
+          <div class="program-body">
+            <div class="program-tag tag-chip" style="background:rgba(21,101,192,0.1);color:var(--blue);">Academic Support</div>
+            <div class="program-title">After-School Tutoring</div>
+            <div class="program-desc">One-on-one and small-group tutoring sessions in core subjects including Math, English Language Arts, Science, and Social Studies for K-12 students.</div>
+            <div class="program-meta">
+              <span>📅 Mon–Fri</span>
+              <span>👥 450+ students</span>
+              <span>🆓 Free</span>
             </div>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-img" style="background: linear-gradient(135deg, #2E7D32, #43A047);">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=70" alt="STEM program students experimenting">
+            🔬
+          </div>
+          <div class="program-body">
+            <div class="program-tag tag-chip" style="background:rgba(46,125,50,0.1);color:var(--green);">STEM Education</div>
+            <div class="program-title">STEM Enrichment Lab</div>
+            <div class="program-desc">Hands-on science, technology, engineering, and math activities that spark curiosity, critical thinking, and innovation among students grades 3–12.</div>
+            <div class="program-meta">
+              <span>📅 Saturdays</span>
+              <span>👥 180+ students</span>
+              <span>🏆 Award Winning</span>
+            </div>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-img" style="background: linear-gradient(135deg, #6A1B9A, #AB47BC);">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=500&q=70" alt="Mentorship program students with mentors">
+            🤝
+          </div>
+          <div class="program-body">
+            <div class="program-tag tag-chip" style="background:rgba(106,27,154,0.1);color:var(--purple);">Mentorship</div>
+            <div class="program-title">Youth Mentorship Program</div>
+            <div class="program-desc">Connecting young learners with inspiring adult mentors from the community who provide guidance, support, and real-world career insights.</div>
+            <div class="program-meta">
+              <span>📅 Biweekly</span>
+              <span>👥 200+ students</span>
+              <span>⭐ Highly Rated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-48">
+        <button class="btn btn-primary" onclick="showPage('programs')">View All Programs →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Testimonials</div>
+        <h2 class="section-title">Stories of Transformation</h2>
+        <p class="section-sub">Hear from the students, parents, and volunteers whose lives have been touched by SIHAF K-12 Learning Academy.</p>
+      </div>
+      <div class="grid-3">
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">SIHAF changed my daughter's entire outlook on school. She went from struggling in math to becoming the top student in her class. The tutors here genuinely care about every single child. We are so grateful for this program.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
             <div>
-                <h4 class="font-black text-slate-200 mb-6 uppercase tracking-widest text-sm">Location</h4>
-                <p class="text-slate-400 font-medium leading-relaxed">
-                    350 Hearne Ave<br>
-                    Shreveport, LA 71103<br>
-                    <span class="text-yellow-400 font-bold">(318) 555-0199</span>
-                </p>
+              <div class="testi-name">Ms. Tamara Washington</div>
+              <div class="testi-role">Parent of 5th Grade Student</div>
             </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">As a high school junior, the college prep resources here gave me the confidence to apply to schools I never thought possible. I just got accepted to Louisiana State University with a full scholarship. SIHAF made this happen!</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👦</div>
             <div>
-                <h4 class="font-black text-slate-200 mb-6 uppercase tracking-widest text-sm">Connect</h4>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-indigo-400 hover:text-white hover:border-indigo-400 transition-all"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:bg-rose-600 hover:text-white hover:border-rose-600 transition-all"><i class="fab fa-instagram"></i></a>
-                </div>
+              <div class="testi-name">Marcus Johnson</div>
+              <div class="testi-role">Student, Grade 11</div>
             </div>
+          </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 border-t border-slate-800 pt-8 text-center">
-            <p class="text-slate-500 text-sm font-bold">&copy; 2026 SIHAF K-12 Academy. Registered 501(c)(3) Non-Profit.</p>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">Volunteering as a mentor at SIHAF has been the most rewarding experience of my professional career. Watching kids grow, build confidence, and discover their passions is truly remarkable. This organization does extraordinary work.</div>
+          <div class="testi-author">
+            <div class="testi-avatar">👨</div>
+            <div>
+              <div class="testi-name">Dr. Kevin Simmons</div>
+              <div class="testi-role">Volunteer Mentor & Engineer</div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
+  <!-- DONATE CTA -->
+  <section class="cta-section">
+    <div>
+      <div class="section-tag" style="background:rgba(255,255,255,0.3);color:white;">Make a Difference</div>
+      <h2>Your Generosity Changes Lives</h2>
+      <p>Every dollar you donate goes directly toward providing educational resources, tutoring sessions, school supplies, and mentorship to K-12 students who need it most in Shreveport, Louisiana.</p>
+      <div class="progress-bar-wrap" style="max-width:500px;margin:0 auto 12px;">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:28px;">Annual Goal: <strong>$68,000 raised</strong> of $100,000 — 68% Complete</p>
+      <div class="cta-btns">
+        <button class="btn btn-outline" onclick="showPage('donate')">❤️ Donate Now</button>
+        <button class="btn" style="background:rgba(255,255,255,0.2);color:white;backdrop-filter:blur(8px);" onclick="showPage('volunteer')">🤝 Volunteer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section partners-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Our Partners</div>
+        <h2 class="section-title">Supported by Community Leaders</h2>
+        <p class="section-sub">We are grateful to our generous partners and sponsors who make our mission possible through financial support, in-kind donations, and volunteer resources.</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-logo">📚 Caddo Parish Schools</div>
+        <div class="partner-logo">🏛️ City of Shreveport</div>
+        <div class="partner-logo">🏥 Willis-Knighton Health</div>
+        <div class="partner-logo">🎓 Louisiana State Univ.</div>
+        <div class="partner-logo">🏦 Regions Bank</div>
+        <div class="partner-logo">⛪ Greater Shreveport UMC</div>
+        <div class="partner-logo">🛒 Walmart Foundation</div>
+        <div class="partner-logo">💼 United Way NW LA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div>
+      <div class="section-tag" style="background:rgba(255,255,255,0.2);">Stay Connected</div>
+      <h2>Join Our Newsletter</h2>
+      <p>Get the latest news, success stories, volunteer opportunities, and updates delivered straight to your inbox. Join over 2,000 community members who stay informed about our work.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe Now 🚀</button>
+      </form>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:12px;">No spam, ever. Unsubscribe anytime. We respect your privacy.</p>
+    </div>
+  </section>
+
+</div><!-- END HOME -->
+
+<!-- ============================
+     ABOUT PAGE
+============================ -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">Our Story</div>
+    <h1>About SIHAF K-12 Learning Academy</h1>
+    <p>Learn about our mission, vision, values, team, and the story behind our commitment to K-12 education in Shreveport.</p>
+  </div>
+
+  <!-- MISSION VISION VALUES -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Our Foundation</div>
+        <h2 class="section-title">Mission, Vision & Values</h2>
+        <p class="section-sub">Every action we take is guided by our deep commitment to equity, excellence, and the transformative power of education.</p>
+      </div>
+      <div class="grid-3 mt-48" style="margin-bottom:48px;">
+        <div class="highlight-box text-center">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🎯</div>
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--blue);margin-bottom:12px;">Our Mission</h3>
+          <p style="font-size:0.95rem;">To provide every K-12 student in underserved communities access to high-quality academic support, mentorship, and the resources they need to succeed in school, college, and life.</p>
+        </div>
+        <div class="highlight-box text-center">
+          <div style="font-size:2.5rem;margin-bottom:12px;">🔭</div>
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--blue);margin-bottom:12px;">Our Vision</h3>
+          <p style="font-size:0.95rem;">A future where every child in Shreveport, regardless of zip code or family income, has the opportunity to reach their full potential and contribute meaningfully to their community.</p>
+        </div>
+        <div class="highlight-box text-center">
+          <div style="font-size:2.5rem;margin-bottom:12px;">💡</div>
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--blue);margin-bottom:12px;">Our Purpose</h3>
+          <p style="font-size:0.95rem;">We exist to break the cycle of educational inequity by investing in children today, building the confident, capable, and compassionate leaders of tomorrow.</p>
+        </div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card" style="background:rgba(21,101,192,0.05);color:var(--blue);">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Equity & Inclusion</div>
+          <div class="value-desc">We believe every child deserves equal access to quality education regardless of background, race, or economic status.</div>
+        </div>
+        <div class="value-card" style="background:rgba(46,125,50,0.05);color:var(--green);">
+          <div class="value-icon">⭐</div>
+          <div class="value-title">Excellence</div>
+          <div class="value-desc">We hold ourselves and our students to high standards, celebrating every milestone while always striving for more.</div>
+        </div>
+        <div class="value-card" style="background:rgba(239,108,0,0.05);color:var(--orange);">
+          <div class="value-icon">❤️</div>
+          <div class="value-title">Compassion</div>
+          <div class="value-desc">We lead with love, empathy, and patience, recognizing that every child has unique needs and gifts to offer the world.</div>
+        </div>
+        <div class="value-card" style="background:rgba(106,27,154,0.05);color:var(--purple);">
+          <div class="value-icon">🌍</div>
+          <div class="value-title">Community</div>
+          <div class="value-desc">Strong families and communities are the backbone of student success. We work hand-in-hand with parents, schools, and local leaders.</div>
+        </div>
+        <div class="value-card" style="background:rgba(0,131,143,0.05);color:var(--teal);">
+          <div class="value-icon">🔍</div>
+          <div class="value-title">Transparency</div>
+          <div class="value-desc">We operate with full accountability and openness about how we use our resources and measure our impact.</div>
+        </div>
+        <div class="value-card" style="background:rgba(233,30,99,0.05);color:var(--pink);">
+          <div class="value-icon">🚀</div>
+          <div class="value-title">Innovation</div>
+          <div class="value-desc">We continuously evolve our programs and approaches to meet the changing needs of students in a rapidly evolving world.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- OUR STORY -->
+  <section class="section" style="background:var(--light);">
+    <div class="section-inner">
+      <div class="grid-2">
+        <div>
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">From a Dream to a Movement</h2>
+          <p>SIHAF K-12 Learning Academy was born from a deep conviction: that every child in our community deserves a champion. Our founders witnessed firsthand the devastating impact of educational inequity — children falling behind not due to lack of ability or ambition, but due to lack of access and support.</p>
+          <p>In the early days, we operated out of a single room at a local church in Shreveport's Allendale neighborhood, serving just 15 students with borrowed tables and donated textbooks. The demand was overwhelming. Parents lined up hoping for a spot. Teachers volunteered their evenings. The community rallied around a simple belief: education changes lives.</p>
+          <p>Over the years, SIHAF has grown dramatically. We expanded our programs, hired dedicated staff, trained volunteer mentors, and built partnerships with schools, businesses, and government agencies. Today, we serve over 1,200 students annually across multiple programs and locations throughout the Shreveport area.</p>
+          <p>Our journey is far from over. Every year, we deepen our impact and expand our reach. Every child we serve reminds us why we started — and why we will never stop.</p>
+        </div>
+        <div>
+          <div class="section-tag">Our History</div>
+          <h2 class="section-title">Timeline of Growth</h2>
+          <div class="timeline mt-32">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2016</div>
+              <div class="timeline-title">Foundation & First Steps</div>
+              <div class="timeline-text">SIHAF K-12 Learning Academy is founded by a group of dedicated educators and community leaders. We launch our first after-school tutoring program serving 15 students in Allendale.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2017</div>
+              <div class="timeline-title">IRS 501(c)(3) Recognition</div>
+              <div class="timeline-text">We receive official IRS recognition as a tax-exempt 501(c)(3) nonprofit organization (EIN: 47-1775962), opening doors to federal grants and donor tax deductions.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2018</div>
+              <div class="timeline-title">STEM Lab Launch</div>
+              <div class="timeline-text">Thanks to a generous community grant, we launch our STEM Enrichment Lab, introducing hands-on science and technology education to over 80 students in the first semester.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2020</div>
+              <div class="timeline-title">Pandemic Pivots & Growth</div>
+              <div class="timeline-text">During COVID-19, we pivot to virtual learning and expand our reach, distributing over 200 laptops and hotspot devices to students in need. Enrollment grows by 40%.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2022</div>
+              <div class="timeline-title">New Home & Expanded Programs</div>
+              <div class="timeline-text">We move to our current facility at 350 Hearne Ave, Shreveport, and launch our College Readiness and Youth Mentorship programs, serving over 800 students.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2024–25</div>
+              <div class="timeline-title">1,200+ Students & Growing</div>
+              <div class="timeline-text">SIHAF now serves 1,200+ students annually with 8 programs, 85+ volunteers, and $480K+ in scholarships awarded. Our vision for the future is bigger than ever.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Our Team</div>
+        <h2 class="section-title">The People Behind the Mission</h2>
+        <p class="section-sub">Our dedicated staff, board members, and volunteer educators bring passion, expertise, and heart to everything they do.</p>
+      </div>
+      <div class="grid-4 mt-48">
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#1565C0,#1E88E5);">👩‍💼</div>
+          <div class="team-body">
+            <div class="team-name">Dr. Angela Brooks</div>
+            <div class="team-role">Executive Director</div>
+            <div class="team-bio">With 20+ years in education, Dr. Brooks leads SIHAF's strategic vision and community partnerships. She holds a PhD in Educational Leadership from LSU.</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#2E7D32,#43A047);">👨‍🏫</div>
+          <div class="team-body">
+            <div class="team-name">Mr. David Carter</div>
+            <div class="team-role">Director of Programs</div>
+            <div class="team-bio">David oversees all academic programs, curriculum development, and tutor training. He is a former Caddo Parish teacher with a passion for equity-focused education.</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">👩‍🎓</div>
+          <div class="team-body">
+            <div class="team-name">Ms. Rachel Thibodaux</div>
+            <div class="team-role">Community Outreach Manager</div>
+            <div class="team-bio">Rachel builds relationships with families, schools, and community partners to ensure our programs reach the students who need us most.</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#E65100,#FF8F00);">👨‍💻</div>
+          <div class="team-body">
+            <div class="team-name">Mr. James Okafor</div>
+            <div class="team-role">STEM Program Lead</div>
+            <div class="team-bio">A former NASA engineer, James brings world-class STEM expertise to our youth. He designed our award-winning robotics and coding curriculum.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOARD & GOVERNANCE -->
+  <section class="section" style="background:var(--light);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Governance</div>
+        <h2 class="section-title">Board of Directors</h2>
+        <p class="section-sub">Our diverse board of directors provides strategic oversight, fiduciary responsibility, and community accountability for SIHAF K-12 Learning Academy.</p>
+      </div>
+      <div class="grid-3 mt-48">
+        <div class="card text-center">
+          <div style="font-size:2rem;margin-bottom:8px;">🏛️</div>
+          <div style="font-weight:800;font-size:1.05rem;color:var(--dark);margin-bottom:4px;">Rev. Thomas Williams</div>
+          <div style="font-size:0.8rem;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:10px;">Board Chair</div>
+          <div style="font-size:0.88rem;color:var(--gray);">Community leader and pastor serving the Shreveport community for over 30 years.</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size:2rem;margin-bottom:8px;">💼</div>
+          <div style="font-weight:800;font-size:1.05rem;color:var(--dark);margin-bottom:4px;">Ms. Linda Fontenot</div>
+          <div style="font-size:0.8rem;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:10px;">Board Treasurer</div>
+          <div style="font-size:0.88rem;color:var(--gray);">CPA with 25 years in nonprofit financial management and community investment.</div>
+        </div>
+        <div class="card text-center">
+          <div style="font-size:2rem;margin-bottom:8px;">⚖️</div>
+          <div style="font-weight:800;font-size:1.05rem;color:var(--dark);margin-bottom:4px;">Atty. Marcus Pierre</div>
+          <div style="font-size:0.8rem;color:var(--blue);font-weight:700;text-transform:uppercase;margin-bottom:10px;">Board Secretary</div>
+          <div style="font-size:0.88rem;color:var(--gray);">Education attorney and advocate for equitable school funding and policy reform.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCY -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Transparency</div>
+        <h2 class="section-title">Accountability & Financial Overview</h2>
+        <p class="section-sub">We believe in complete transparency. Here is how we allocate every dollar donated to SIHAF K-12 Learning Academy.</p>
+      </div>
+      <div class="grid-2 mt-48">
+        <div>
+          <div class="highlight-box">
+            <div class="badge-501c3 mb-0" style="margin-bottom:20px;">✅ 501(c)(3) Recognized Nonprofit · EIN: 47-1775962</div>
+            <div style="margin-top:16px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:10px;align-items:center;">
+                <span style="font-weight:700;color:var(--dark);">Programs & Education (72%)</span>
+                <span style="font-weight:800;color:var(--blue);">72%</span>
+              </div>
+              <div style="height:10px;background:var(--light);border-radius:50px;margin-bottom:18px;overflow:hidden;"><div style="height:100%;width:72%;background:linear-gradient(to right,var(--blue),var(--sky));border-radius:50px;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:10px;align-items:center;">
+                <span style="font-weight:700;color:var(--dark);">Community Outreach (15%)</span>
+                <span style="font-weight:800;color:var(--green);">15%</span>
+              </div>
+              <div style="height:10px;background:var(--light);border-radius:50px;margin-bottom:18px;overflow:hidden;"><div style="height:100%;width:15%;background:linear-gradient(to right,var(--green),var(--green-bright));border-radius:50px;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:10px;align-items:center;">
+                <span style="font-weight:700;color:var(--dark);">Administration (8%)</span>
+                <span style="font-weight:800;color:var(--orange);">8%</span>
+              </div>
+              <div style="height:10px;background:var(--light);border-radius:50px;margin-bottom:18px;overflow:hidden;"><div style="height:100%;width:8%;background:linear-gradient(to right,var(--orange),var(--yellow));border-radius:50px;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:10px;align-items:center;">
+                <span style="font-weight:700;color:var(--dark);">Fundraising & Development (5%)</span>
+                <span style="font-weight:800;color:var(--purple);">5%</span>
+              </div>
+              <div style="height:10px;background:var(--light);border-radius:50px;overflow:hidden;"><div style="height:100%;width:5%;background:linear-gradient(to right,var(--purple),#CE93D8);border-radius:50px;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--dark);margin-bottom:20px;">Annual Reports</h3>
+          <div class="report-card" style="margin-bottom:14px;">
+            <div class="report-icon">📄</div>
+            <div class="report-info"><h4>Annual Report 2024</h4><p>Full financial statements & impact summary</p></div>
+            <button class="report-download">⬇ Download</button>
+          </div>
+          <div class="report-card" style="margin-bottom:14px;">
+            <div class="report-icon">📄</div>
+            <div class="report-info"><h4>Annual Report 2023</h4><p>Full financial statements & impact summary</p></div>
+            <button class="report-download">⬇ Download</button>
+          </div>
+          <div class="report-card">
+            <div class="report-icon">📄</div>
+            <div class="report-info"><h4>Annual Report 2022</h4><p>Full financial statements & impact summary</p></div>
+            <button class="report-download">⬇ Download</button>
+          </div>
+          <div class="highlight-box mt-32">
+            <p style="font-size:0.9rem;"><strong>Note:</strong> SIHAF K-12 Learning Academy files an IRS Form 990 annually. Our financial records are available upon request and are reviewed annually by an independent auditor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-section"><div><h2>Stay Updated</h2><p>Subscribe to our newsletter for organization updates, impact stories, and upcoming events.</p><form class="newsletter-form" onsubmit="handleNewsletter(event)"><input type="email" placeholder="Your email address" required><button type="submit">Subscribe</button></form></div></section>
+</div><!-- END ABOUT -->
+
+<!-- ============================
+     PROGRAMS PAGE
+============================ -->
+<div class="page" id="page-programs">
+  <div class="programs-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">What We Do</div>
+    <h1>Our Programs & Services</h1>
+    <p>Six comprehensive programs designed to support every K-12 student on their journey from classroom to career.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="program-full">
+        <div>
+          <div class="section-tag" style="background:rgba(21,101,192,0.1);color:var(--blue);">Program 1</div>
+          <h2 class="section-title">After-School Academic Tutoring</h2>
+          <p>Our flagship program provides free, high-quality tutoring in core academic subjects for students in grades K through 12. Every session is led by trained volunteer educators and supervised by certified teachers. Students receive individualized attention based on their current grade level, learning style, and academic goals.</p>
+          <p>We offer both one-on-one and small group tutoring formats, homework help, test preparation support, and reading intervention services for younger students. Our tutors are trained in culturally responsive teaching and trauma-informed practices to ensure every student feels safe, seen, and supported.</p>
+          <div class="program-impact">
+            <div class="impact-pill">📅 Mon–Fri, 3–6 PM</div>
+            <div class="impact-pill">👥 450+ Active Students</div>
+            <div class="impact-pill">🆓 Completely Free</div>
+            <div class="impact-pill">📍 350 Hearne Ave</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#1565C0,#29B6F6);">📚</div>
+      </div>
+
+      <div class="program-full reverse">
+        <div>
+          <div class="section-tag" style="background:rgba(46,125,50,0.1);color:var(--green);">Program 2</div>
+          <h2 class="section-title">STEM Enrichment Lab</h2>
+          <p>Our STEM Enrichment Lab brings the excitement of science, technology, engineering, and mathematics to life through hands-on, project-based learning. Students in grades 3–12 engage in experiments, robotics projects, coding workshops, and engineering challenges that build critical thinking and problem-solving skills.</p>
+          <p>The lab is equipped with computers, 3D printers, robotics kits, science equipment, and interactive learning materials. We partner with local businesses and universities to bring guest instructors, field trips, and real-world career connections to our students.</p>
+          <div class="program-impact">
+            <div class="impact-pill">📅 Saturdays, 9 AM–1 PM</div>
+            <div class="impact-pill">👥 180+ Students</div>
+            <div class="impact-pill">🏆 Award-Winning Curriculum</div>
+            <div class="impact-pill">🔬 Grades 3–12</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">🔬</div>
+      </div>
+
+      <div class="program-full">
+        <div>
+          <div class="section-tag" style="background:rgba(106,27,154,0.1);color:var(--purple);">Program 3</div>
+          <h2 class="section-title">Youth Mentorship Program</h2>
+          <p>The SIHAF Youth Mentorship Program connects students ages 10–18 with caring, trained adult mentors from across the Shreveport community. Mentors meet with their mentees biweekly for one-on-one sessions focused on academic goal setting, social-emotional skill building, career exploration, and character development.</p>
+          <p>Mentors come from diverse professional backgrounds including healthcare, law, engineering, education, entrepreneurship, and public service. Each mentor-mentee relationship is carefully matched and supported by our professional program staff.</p>
+          <div class="program-impact">
+            <div class="impact-pill">📅 Biweekly Meetings</div>
+            <div class="impact-pill">👥 200+ Student-Mentor Pairs</div>
+            <div class="impact-pill">🎓 Ages 10–18</div>
+            <div class="impact-pill">⭐ 95% Retention Rate</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">🤝</div>
+      </div>
+
+      <div class="program-full reverse">
+        <div>
+          <div class="section-tag" style="background:rgba(239,108,0,0.1);color:var(--orange);">Program 4</div>
+          <h2 class="section-title">College Readiness & Prep</h2>
+          <p>Designed for students in grades 9–12, our College Readiness program demystifies the college application process and ensures every student has equal access to higher education opportunities. Services include SAT/ACT preparation, college essay writing workshops, financial aid guidance, scholarship searches, and college visits.</p>
+          <p>Our college counselors work individually with each student to build a personalized post-secondary plan that aligns with their talents, interests, and goals — whether that path leads to a four-year university, community college, vocational training, or the workforce.</p>
+          <div class="program-impact">
+            <div class="impact-pill">🎓 Grades 9–12</div>
+            <div class="impact-pill">📝 SAT/ACT Prep Included</div>
+            <div class="impact-pill">💰 $480K+ Scholarships Found</div>
+            <div class="impact-pill">🏫 89% College Acceptance Rate</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#E65100,#FF8F00);">🎓</div>
+      </div>
+
+      <div class="program-full">
+        <div>
+          <div class="section-tag" style="background:rgba(0,131,143,0.1);color:var(--teal);">Program 5</div>
+          <h2 class="section-title">Social-Emotional Learning (SEL)</h2>
+          <p>Academic success begins with emotional health. Our SEL program provides students with essential life skills including self-awareness, conflict resolution, emotional regulation, empathy, and resilience. Weekly group sessions and individual check-ins help students navigate the social and emotional challenges of adolescence with confidence and grace.</p>
+          <p>Our SEL facilitators are licensed social workers and mental health professionals who create safe, confidential spaces for students to process their feelings, build healthy relationships, and develop the social competencies needed to thrive both inside and outside the classroom.</p>
+          <div class="program-impact">
+            <div class="impact-pill">📅 Weekly Sessions</div>
+            <div class="impact-pill">👩‍⚕️ Licensed Facilitators</div>
+            <div class="impact-pill">🧠 All Grade Levels</div>
+            <div class="impact-pill">🔒 Confidential</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#00838F,#00BCD4);">🧠</div>
+      </div>
+
+      <div class="program-full reverse">
+        <div>
+          <div class="section-tag" style="background:rgba(233,30,99,0.1);color:var(--pink);">Program 6</div>
+          <h2 class="section-title">Summer Learning Camp</h2>
+          <p>Our Summer Learning Camp prevents the "summer slide" — the well-documented loss of academic skills during school breaks — by providing an engaging, six-week summer enrichment experience for K-8 students. Campers participate in academic instruction, STEM activities, arts and crafts, field trips, sports, and team-building activities.</p>
+          <p>The camp is designed to be fun, culturally enriching, and academically rigorous. We provide breakfast and lunch daily, transportation assistance, and take-home activity kits. The camp is offered at low or no cost to families demonstrating financial need.</p>
+          <div class="program-impact">
+            <div class="impact-pill">☀️ June–July, 6 Weeks</div>
+            <div class="impact-pill">🍎 Meals Included</div>
+            <div class="impact-pill">👧 Grades K–8</div>
+            <div class="impact-pill">🚌 Transportation Assistance</div>
+          </div>
+        </div>
+        <div class="program-full-img" style="background:linear-gradient(135deg,#E91E63,#F06292);">☀️</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section"><div><h2>Ready to Enroll or Support?</h2><p>All of our programs are free or low-cost for eligible families. Contact us today to learn about enrollment, volunteer opportunities, or how your donation funds these programs.</p><div class="cta-btns"><button class="btn btn-outline" onclick="showPage('contact')">📞 Contact Us</button><button class="btn btn-outline" onclick="showPage('donate')">❤️ Fund a Program</button></div></div></section>
+</div><!-- END PROGRAMS -->
+
+<!-- ============================
+     DONATE PAGE
+============================ -->
+<div class="page" id="page-donate">
+  <div class="donate-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.25);">Give Today</div>
+    <h1>Make a Life-Changing Donation</h1>
+    <p>Your generosity funds tutoring, STEM labs, scholarships, and mentorship for K-12 students in Shreveport, Louisiana.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="donate-grid">
+        <div>
+          <div class="donate-form-card">
+            <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.3rem;color:var(--dark);margin-bottom:20px;">🎯 Make Your Donation</h3>
+            <div class="donate-type-btns">
+              <button class="type-btn active" onclick="setType(this,'one-time')">One-Time</button>
+              <button class="type-btn" onclick="setType(this,'monthly')">Monthly</button>
+              <button class="type-btn" onclick="setType(this,'annual')">Annual</button>
+            </div>
+            <p style="font-size:0.85rem;color:var(--gray);margin-bottom:14px;">Select an amount or enter a custom gift:</p>
+            <div class="amount-grid">
+              <button class="amount-btn" onclick="setAmount(this,'10')">$10</button>
+              <button class="amount-btn" onclick="setAmount(this,'25')">$25</button>
+              <button class="amount-btn active" onclick="setAmount(this,'50')">$50</button>
+              <button class="amount-btn" onclick="setAmount(this,'100')">$100</button>
+              <button class="amount-btn" onclick="setAmount(this,'250')">$250</button>
+              <button class="amount-btn" onclick="setAmount(this,'500')">$500</button>
+            </div>
+            <div class="form-group">
+              <label>Custom Amount ($)</label>
+              <input type="number" id="customAmount" placeholder="Enter amount" min="1">
+            </div>
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Your last name">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label>Dedicate This Gift (Optional)</label>
+              <input type="text" placeholder="In honor of / In memory of...">
+            </div>
+            <div class="form-group">
+              <label>Designate Funds (Optional)</label>
+              <select>
+                <option>Where Most Needed</option>
+                <option>After-School Tutoring</option>
+                <option>STEM Enrichment Lab</option>
+                <option>Youth Mentorship</option>
+                <option>College Readiness</option>
+                <option>Summer Learning Camp</option>
+                <option>Scholarships</option>
+              </select>
+            </div>
+            <div style="background:rgba(46,125,50,0.07);border-radius:10px;padding:14px;margin-bottom:18px;border:1px solid rgba(46,125,50,0.15);">
+              <p style="font-size:0.82rem;color:var(--green);font-weight:700;">🔒 Secure & Tax-Deductible · SIHAF K-12 is a 501(c)(3) nonprofit · EIN: 47-1775962</p>
+            </div>
+            <button class="btn btn-orange" style="width:100%;justify-content:center;font-size:1.1rem;padding:16px;" onclick="handleDonate()">❤️ Complete Donation</button>
+          </div>
+        </div>
+        <div>
+          <div class="donate-info-card">
+            <h3 style="font-family:var(--font-body);font-weight:800;color:white;margin-bottom:20px;">Your Donation at Work</h3>
+            <div style="margin-bottom:20px;">
+              <div style="display:flex;justify-content:space-between;color:rgba(255,255,255,0.8);font-size:0.9rem;margin-bottom:4px;">
+                <span>Annual Fundraising Goal</span>
+                <span style="color:var(--yellow);font-weight:800;">$68K / $100K</span>
+              </div>
+              <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+              <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);">68% of annual goal reached — Help us close the gap!</p>
+            </div>
+            <div class="impact-breakdown">
+              <h4 style="font-family:var(--font-body);font-weight:800;color:white;margin-bottom:16px;">What Your Gift Provides:</h4>
+              <div class="impact-row">
+                <div class="impact-row-left">🍎 $10 buys school supplies for 1 student</div>
+                <div class="impact-row-right">$10</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">📚 $25 funds 1 tutoring session</div>
+                <div class="impact-row-right">$25</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">💻 $50 provides 1 month of online resources</div>
+                <div class="impact-row-right">$50</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">🔬 $100 funds a STEM lab session</div>
+                <div class="impact-row-right">$100</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">🎓 $250 covers summer camp for 1 student</div>
+                <div class="impact-row-right">$250</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">🌟 $500 sponsors a full mentorship pair</div>
+                <div class="impact-row-right">$500</div>
+              </div>
+              <div class="impact-row">
+                <div class="impact-row-left">🏆 $1,000+ transforms a student's year</div>
+                <div class="impact-row-right">$1,000+</div>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-24">
+            <h4 style="font-family:var(--font-body);font-weight:800;color:var(--dark);margin-bottom:12px;">Other Ways to Give</h4>
+            <p style="font-size:0.9rem;">📬 <strong>By Mail:</strong> Send a check to 350 Hearne Ave, Shreveport, LA 71103. Make checks payable to "SIHAF K-12 Learning Academy."</p>
+            <p style="font-size:0.9rem;margin-top:10px;">🏢 <strong>Corporate Matching:</strong> Many employers match donations. Ask your HR department if your company offers this benefit.</p>
+            <p style="font-size:0.9rem;margin-top:10px;">📦 <strong>In-Kind Donations:</strong> We gladly accept school supplies, books, computers, and educational materials.</p>
+            <p style="font-size:0.9rem;margin-top:10px;">📧 <strong>Contact:</strong> <a href="mailto:edu@sihafk12learningacademy.site" style="color:var(--blue);font-weight:700;">edu@sihafk12learningacademy.site</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- END DONATE -->
+
+<!-- ============================
+     VOLUNTEER PAGE
+============================ -->
+<div class="page" id="page-volunteer">
+  <div class="volunteer-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">Get Involved</div>
+    <h1>Volunteer With Us</h1>
+    <p>Share your skills, time, and passion to make a lasting difference in the lives of K-12 students in Shreveport.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="grid-2">
+        <div>
+          <div class="section-tag">Why Volunteer</div>
+          <h2 class="section-title">Be the Change You Wish to See</h2>
+          <p>Volunteering with SIHAF K-12 Learning Academy is one of the most impactful ways you can give back to your community. Our volunteers are the heartbeat of our organization — they show up week after week with energy, dedication, and a genuine love for young people.</p>
+          <p>Whether you're a retired teacher, a college student, a working professional, or a community member who simply wants to help, there is a place for you at SIHAF. We match every volunteer with a role that fits their skills, schedule, and passions.</p>
+          <p>All volunteers receive comprehensive training, ongoing support, and recognition for their contributions. Many of our volunteers describe their experience as personally transformative — often saying they receive far more from the students than they give.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">📚</div>
+            <div class="benefit-title">Make Real Impact</div>
+            <div class="benefit-desc">Your time directly helps students improve grades, build confidence, and reach their goals.</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎓</div>
+            <div class="benefit-title">Free Training</div>
+            <div class="benefit-desc">Receive comprehensive volunteer training, resources, and ongoing professional development.</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🤝</div>
+            <div class="benefit-title">Build Community</div>
+            <div class="benefit-desc">Join a diverse community of passionate educators, mentors, and change-makers.</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📋</div>
+            <div class="benefit-title">Resume Builder</div>
+            <div class="benefit-desc">Gain valuable experience and receive official recognition letters for your volunteer service.</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🌟</div>
+            <div class="benefit-title">Personal Growth</div>
+            <div class="benefit-desc">Develop leadership, communication, and mentorship skills while making a difference.</div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">❤️</div>
+            <div class="benefit-title">Deep Fulfillment</div>
+            <div class="benefit-desc">Experience the joy and purpose that comes from investing in the next generation of leaders.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--light);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Opportunities</div>
+        <h2 class="section-title">Find Your Perfect Role</h2>
+        <p class="section-sub">We have volunteer opportunities for every background, skill level, and schedule. Join us wherever you fit best.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:48px;">
+        <div class="vol-opportunity">
+          <div class="vol-opp-accent" style="background:var(--blue);"></div>
+          <div class="vol-opp-body">
+            <div class="vol-opp-title">📚 Academic Tutor</div>
+            <div class="vol-opp-desc">Provide one-on-one or small group tutoring in core subjects (Math, ELA, Science, Social Studies) to K-12 students after school, Monday through Friday. No formal teaching degree required — just subject knowledge and a heart for students.</div>
+            <div class="vol-opp-meta">
+              <div class="vol-opp-chip">📅 Mon–Fri, Evenings</div>
+              <div class="vol-opp-chip">⏱ 2–4 hrs/week</div>
+              <div class="vol-opp-chip">🎓 Subject Expertise Needed</div>
+            </div>
+          </div>
+        </div>
+        <div class="vol-opportunity">
+          <div class="vol-opp-accent" style="background:var(--purple);"></div>
+          <div class="vol-opp-body">
+            <div class="vol-opp-title">🤝 Youth Mentor</div>
+            <div class="vol-opp-desc">Commit to a 1-year mentorship relationship with a young person ages 10–18. Meet biweekly for guided sessions focused on academic goal setting, life skills, and career exploration. Mentors are carefully matched with mentees based on shared interests and backgrounds.</div>
+            <div class="vol-opp-meta">
+              <div class="vol-opp-chip">📅 Biweekly</div>
+              <div class="vol-opp-chip">⏱ 2 hrs every 2 weeks</div>
+              <div class="vol-opp-chip">📋 1-Year Commitment</div>
+            </div>
+          </div>
+        </div>
+        <div class="vol-opportunity">
+          <div class="vol-opp-accent" style="background:var(--green);"></div>
+          <div class="vol-opp-body">
+            <div class="vol-opp-title">🔬 STEM Instructor</div>
+            <div class="vol-opp-desc">Lead exciting Saturday STEM workshops for students grades 3–12. Share your expertise in coding, robotics, science experiments, engineering challenges, or mathematics. Curriculum is provided, but your passion and creativity bring it to life.</div>
+            <div class="vol-opp-meta">
+              <div class="vol-opp-chip">📅 Saturdays</div>
+              <div class="vol-opp-chip">⏱ 4 hrs/week</div>
+              <div class="vol-opp-chip">💻 STEM Background Preferred</div>
+            </div>
+          </div>
+        </div>
+        <div class="vol-opportunity">
+          <div class="vol-opp-accent" style="background:var(--orange);"></div>
+          <div class="vol-opp-body">
+            <div class="vol-opp-title">🎓 College Readiness Coach</div>
+            <div class="vol-opp-desc">Help high school students navigate the college application process, including essay reviews, financial aid guidance, and scholarship research. Connect students with your college or university network for campus visits and informational interviews.</div>
+            <div class="vol-opp-meta">
+              <div class="vol-opp-chip">📅 Flexible Schedule</div>
+              <div class="vol-opp-chip">⏱ 3 hrs/week</div>
+              <div class="vol-opp-chip">🎓 College Degree Required</div>
+            </div>
+          </div>
+        </div>
+        <div class="vol-opportunity">
+          <div class="vol-opp-accent" style="background:var(--teal);"></div>
+          <div class="vol-opp-body">
+            <div class="vol-opp-title">📸 Events & Communications Volunteer</div>
+            <div class="vol-opp-desc">Support our events team with photography, social media content creation, newsletter writing, graphic design, or event coordination. Help us tell our story and grow our community presence online and offline.</div>
+            <div class="vol-opp-meta">
+              <div class="vol-opp-chip">📅 Event-Based</div>
+              <div class="vol-opp-chip">⏱ 2–5 hrs/event</div>
+              <div class="vol-opp-chip">🎨 Creative Skills Welcome</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="grid-2">
+        <div>
+          <div class="section-tag">Sign Up</div>
+          <h2 class="section-title">Ready to Make a Difference?</h2>
+          <p>Fill out the volunteer interest form and a member of our team will reach out within 48 hours to discuss your perfect volunteer placement, complete your background check, and get you oriented. We can't wait to welcome you to our SIHAF family!</p>
+          <div class="highlight-box mt-32">
+            <h4 style="font-family:var(--font-body);font-weight:800;color:var(--dark);margin-bottom:12px;">Volunteer Requirements</h4>
+            <ul style="list-style:none;margin:0;">
+              <li style="display:flex;gap:10px;margin-bottom:8px;font-size:0.9rem;"><span>✅</span>Must be 18+ years of age</li>
+              <li style="display:flex;gap:10px;margin-bottom:8px;font-size:0.9rem;"><span>✅</span>Pass a background check (provided free)</li>
+              <li style="display:flex;gap:10px;margin-bottom:8px;font-size:0.9rem;"><span>✅</span>Complete volunteer orientation training</li>
+              <li style="display:flex;gap:10px;margin-bottom:8px;font-size:0.9rem;"><span>✅</span>Commit to your agreed schedule for minimum 3 months</li>
+              <li style="display:flex;gap:10px;font-size:0.9rem;"><span>✅</span>Abide by SIHAF's code of conduct and child safety policies</li>
+            </ul>
+          </div>
+        </div>
+        <div class="donate-form-card">
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--dark);margin-bottom:20px;">🤝 Volunteer Interest Form</h3>
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(318) 000-0000"></div>
+          <div class="form-group"><label>Preferred Role</label><select><option>Academic Tutor</option><option>Youth Mentor</option><option>STEM Instructor</option><option>College Coach</option><option>Events Volunteer</option><option>Other</option></select></div>
+          <div class="form-group"><label>Availability</label><select><option>Weekday Evenings</option><option>Saturdays</option><option>Flexible / Remote</option><option>Weekends</option></select></div>
+          <div class="form-group"><label>Tell Us About Yourself</label><textarea placeholder="Share your background, skills, and why you want to volunteer..."></textarea></div>
+          <button class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="handleForm()">🤝 Submit Interest Form</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- END VOLUNTEER -->
+
+<!-- ============================
+     BLOG PAGE
+============================ -->
+<div class="page" id="page-blog">
+  <div class="blog-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">Updates & Stories</div>
+    <h1>News, Stories & Impact</h1>
+    <p>Stay up to date with the latest from SIHAF K-12 Learning Academy — student successes, program news, community events, and more.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="blog-categories">
+        <button class="blog-cat-btn active">All</button>
+        <button class="blog-cat-btn">Student Success</button>
+        <button class="blog-cat-btn">Program News</button>
+        <button class="blog-cat-btn">Events</button>
+        <button class="blog-cat-btn">Community</button>
+        <button class="blog-cat-btn">Volunteers</button>
+        <button class="blog-cat-btn">Announcements</button>
+      </div>
+      <div class="grid-3">
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#1565C0,#29B6F6);">📚</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--blue);">Student Success</div>
+            <div class="blog-title">From Failing Grades to Honor Roll: Marcus's Story of Transformation</div>
+            <div class="blog-excerpt">When Marcus first walked into SIHAF as a struggling 7th grader, he had nearly given up on school. Eight months later, he stood on stage accepting the Academic Excellence Award. Here is his incredible journey.</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar">JT</div>James Thompson</div>
+              <span>April 2, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">🔬</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--green);">Program News</div>
+            <div class="blog-title">SIHAF STEM Team Wins Regional Robotics Championship</div>
+            <div class="blog-excerpt">Our robotics team of six students from grades 7–10 competed against 24 other teams and took home first place at the Louisiana Regional STEM Challenge. Meet the champions!</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar" style="background:var(--green);">AB</div>Angela Brooks</div>
+              <span>March 18, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#6A1B9A,#AB47BC);">🎉</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--purple);">Events</div>
+            <div class="blog-title">Annual Gala Raises $42,000 for Student Scholarships</div>
+            <div class="blog-excerpt">Over 200 community supporters gathered at the Shreveport Convention Center for our annual fundraising gala. The evening raised a record $42,000 to fund scholarships for deserving students.</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar" style="background:var(--purple);">RT</div>Rachel Thibodaux</div>
+              <span>March 5, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#E65100,#FF8F00);">🌍</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--orange);">Community</div>
+            <div class="blog-title">SIHAF Partners with Caddo Parish Schools for Summer Bridge Program</div>
+            <div class="blog-excerpt">We are thrilled to announce a new partnership with Caddo Parish School System to offer a free summer bridge program for incoming 6th graders, helping them transition successfully to middle school.</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar" style="background:var(--orange);">DC</div>David Carter</div>
+              <span>February 22, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#00838F,#00BCD4);">🤝</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--teal);">Volunteers</div>
+            <div class="blog-title">Meet Dr. Kevin Simmons: Volunteer of the Year 2024</div>
+            <div class="blog-excerpt">Dr. Kevin Simmons, a mechanical engineer, has volunteered with SIHAF for three consecutive years. His mentorship has helped dozens of students discover STEM careers. We celebrate his extraordinary dedication.</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar" style="background:var(--teal);">AB</div>Angela Brooks</div>
+              <span>February 14, 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img" style="background:linear-gradient(135deg,#C62828,#E57373);">📣</div>
+          <div class="blog-body">
+            <div class="blog-cat" style="color:var(--red);">Announcements</div>
+            <div class="blog-title">SIHAF Receives $25,000 Grant from the Community Foundation of Louisiana</div>
+            <div class="blog-excerpt">We are deeply grateful to announce a $25,000 grant award from the Community Foundation of Louisiana. These funds will directly support expansion of our College Readiness program for 2025.</div>
+            <div class="blog-meta">
+              <div class="blog-author"><div class="blog-avatar" style="background:var(--red);">AB</div>Angela Brooks</div>
+              <span>January 30, 2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="newsletter-section"><div><h2>Never Miss an Update</h2><p>Subscribe to our newsletter to get the latest stories, events, and news delivered to your inbox.</p><form class="newsletter-form" onsubmit="handleNewsletter(event)"><input type="email" placeholder="Your email address" required><button type="submit">Subscribe</button></form></div></section>
+</div><!-- END BLOG -->
+
+<!-- ============================
+     CONTACT PAGE
+============================ -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">Reach Us</div>
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you — whether you want to enroll a student, volunteer, donate, or just learn more about our work.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="donate-form-card">
+          <h3 style="font-family:var(--font-body);font-weight:800;font-size:1.2rem;color:var(--dark);margin-bottom:20px;">📬 Send Us a Message</h3>
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-group"><label>Phone (Optional)</label><input type="tel" placeholder="(318) 000-0000"></div>
+          <div class="form-group"><label>Subject</label><select><option>General Inquiry</option><option>Student Enrollment</option><option>Volunteer Opportunities</option><option>Donation / Partnership</option><option>Media & Press</option><option>Other</option></select></div>
+          <div class="form-group"><label>Your Message</label><textarea placeholder="How can we help you? Tell us about your interest, question, or how you'd like to get involved..."></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="handleForm()">📬 Send Message</button>
+        </div>
+        <div>
+          <div class="contact-info-card">
+            <h3 style="font-family:var(--font-body);font-weight:800;color:white;margin-bottom:24px;">Contact Information</h3>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div class="contact-info-text">
+                <h4>Our Address</h4>
+                <p>350 Hearne Ave<br>Shreveport, LA 71103<br>United States</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📧</div>
+              <div class="contact-info-text">
+                <h4>Email Us</h4>
+                <p>edu@sihafk12learningacademy.site</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🏢</div>
+              <div class="contact-info-text">
+                <h4>Office Hours</h4>
+                <p>Monday – Friday: 9:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📋</div>
+              <div class="contact-info-text">
+                <h4>Tax ID (EIN)</h4>
+                <p>47-1775962 · 501(c)(3) Registered</p>
+              </div>
+            </div>
+            <div class="map-placeholder">🗺️ Shreveport, LA 71103</div>
+            <div style="margin-top:20px;">
+              <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:12px;font-weight:700;">Follow Us:</p>
+              <div class="social-grid">
+                <div class="social-btn">📘 Facebook</div>
+                <div class="social-btn">📸 Instagram</div>
+                <div class="social-btn">🐦 Twitter</div>
+                <div class="social-btn">▶️ YouTube</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- END CONTACT -->
+
+<!-- ============================
+     FAQ PAGE
+============================ -->
+<div class="page" id="page-faq">
+  <div class="faq-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.2);">FAQ</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Find answers to the most common questions about SIHAF K-12 Learning Academy, our programs, donations, and volunteering.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner" style="max-width:860px;">
+      <div class="faq-category">
+        <h2 class="faq-category-title">📚 About the Organization</h2>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What is SIHAF K-12 Learning Academy? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>SIHAF K-12 Learning Academy is a federally recognized 501(c)(3) nonprofit educational organization based in Shreveport, Louisiana. We provide free and low-cost academic support, mentorship, STEM enrichment, college readiness, and social-emotional learning programs to K-12 students in underserved communities.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is SIHAF a 501(c)(3) nonprofit? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Yes. SIHAF K-12 Learning Academy is a federally tax-exempt organization under Section 501(c)(3) of the Internal Revenue Code. Our Employer Identification Number (EIN) is 47-1775962. Donations to SIHAF are tax-deductible to the fullest extent allowed by law.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Where is SIHAF located? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Our main office and program center is located at 350 Hearne Ave, Shreveport, LA 71103, United States. You can reach us by email at edu@sihafk12learningacademy.site. Our office is open Monday–Friday, 9:00 AM – 6:00 PM, and Saturdays, 9:00 AM – 2:00 PM.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">When was SIHAF founded? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>SIHAF K-12 Learning Academy was founded in 2016 by a group of dedicated educators and community leaders in Shreveport, Louisiana. We received official IRS 501(c)(3) recognition in 2017 and have been serving students ever since.</p></div></div>
+      </div>
+
+      <div class="faq-category">
+        <h2 class="faq-category-title">🎓 Programs & Enrollment</h2>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Who can enroll in SIHAF programs? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Our programs are open to all K-12 students in the Shreveport-Bossier City area. We prioritize enrollment for students from low-income households and underserved communities, but we welcome all students regardless of background. There are no academic requirements for enrollment.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Are your programs free? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Most of our programs are completely free for eligible families. The Summer Learning Camp has a small nominal fee for families who can afford it, but no student is ever turned away due to inability to pay. We offer full financial assistance to qualifying families. Contact us to learn more about eligibility.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How do I enroll my child? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>To enroll your child, please visit our Contact page and submit an inquiry, or email us at edu@sihafk12learningacademy.site. A member of our team will reach out within 48 hours to discuss available programs, schedule an assessment, and guide you through the enrollment process.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What subjects do you tutor? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>We provide tutoring support in all core K-12 academic subjects, including Mathematics (arithmetic through calculus), English Language Arts and reading, Science (biology, chemistry, physics, earth science), Social Studies, and standardized test preparation for ACT, SAT, and state assessments.</p></div></div>
+      </div>
+
+      <div class="faq-category">
+        <h2 class="faq-category-title">❤️ Donations</h2>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How can I donate to SIHAF? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>You can donate online through our secure Donate page, by mailing a check to 350 Hearne Ave, Shreveport, LA 71103 (payable to "SIHAF K-12 Learning Academy"), or by contacting us at edu@sihafk12learningacademy.site to discuss corporate gifts, in-kind donations, or recurring contributions.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is my donation tax-deductible? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Yes. SIHAF K-12 Learning Academy is a 501(c)(3) nonprofit organization (EIN: 47-1775962). All charitable donations are tax-deductible to the fullest extent permitted by law. You will receive a donation acknowledgment letter for your records, which serves as your tax receipt.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How are donations used? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>72% of every dollar goes directly to program delivery including tutoring, STEM education, mentorship, and college readiness. 15% supports community outreach and family engagement. 8% covers administrative operations, and 5% goes toward fundraising and development activities.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I make a recurring monthly donation? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Absolutely! Monthly giving is one of the best ways to support SIHAF. Recurring donors provide us with reliable funding that allows us to plan programs, hire staff, and serve more students. You can set up a monthly gift on our Donate page and cancel or modify it at any time.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I get a refund on my donation? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Due to the nature of charitable giving, donations are generally non-refundable. However, if a donation was made in error (e.g., wrong amount or duplicate transaction), please contact us within 30 days at edu@sihafk12learningacademy.site and we will work with you to resolve the issue.</p></div></div>
+      </div>
+
+      <div class="faq-category">
+        <h2 class="faq-category-title">🤝 Volunteering</h2>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do I need a teaching degree to volunteer? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>No formal teaching degree is required for most volunteer positions. We welcome professionals, college students, retirees, and community members from all backgrounds. What matters most is subject knowledge, a genuine love for young people, and a commitment to showing up consistently.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Is there a background check requirement? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Yes. All volunteers who work directly with students must pass a background check. We cover the cost of the background check for all SIHAF volunteers. This requirement is in place to ensure the safety and well-being of every student in our programs.</p></div></div>
+        <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How do I sign up to volunteer? <span class="faq-icon">▼</span></div><div class="faq-answer"><p>Visit our Volunteer page and complete the online interest form. A member of our team will contact you within 48 hours to discuss your interests, schedule, and the best volunteer role for you. From there, we'll guide you through orientation and background check procedures.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-section"><div><h2>Still Have Questions?</h2><p>Our team is happy to answer any questions about our programs, how to get involved, or how your donation makes a difference.</p><div class="cta-btns"><button class="btn btn-outline" onclick="showPage('contact')">📞 Contact Us</button></div></div></section>
+</div><!-- END FAQ -->
+
+<!-- ============================
+     PRIVACY POLICY
+============================ -->
+<div class="page" id="page-privacy">
+  <div class="policy-hero">
+    <h1>Privacy Policy</h1>
+    <p>How SIHAF K-12 Learning Academy collects, uses, and protects your personal information</p>
+  </div>
+  <div class="policy-content">
+    <div class="policy-meta"><strong>Effective Date:</strong> January 1, 2024 &nbsp;|&nbsp; <strong>Last Updated:</strong> March 1, 2025 &nbsp;|&nbsp; <strong>Organization:</strong> SIHAF K-12 Learning Academy &nbsp;|&nbsp; <strong>EIN:</strong> 47-1775962</div>
+    <div class="policy-toc"><h4>Table of Contents</h4><ol><li><a href="#">Information We Collect</a></li><li><a href="#">How We Use Your Information</a></li><li><a href="#">How We Share Your Information</a></li><li><a href="#">Data Security</a></li><li><a href="#">Cookies & Tracking</a></li><li><a href="#">Children's Privacy (COPPA)</a></li><li><a href="#">Your Rights & Choices</a></li><li><a href="#">Third-Party Links</a></li><li><a href="#">Retention of Data</a></li><li><a href="#">Changes to This Policy</a></li><li><a href="#">Contact Us</a></li></ol></div>
+
+    <p>SIHAF K-12 Learning Academy ("SIHAF," "we," "us," or "our") is committed to protecting your privacy and the privacy of the children and families we serve. This Privacy Policy explains how we collect, use, disclose, and protect personal information obtained through our website, programs, and services. By using our website or engaging with our services, you agree to the terms of this Privacy Policy.</p>
+
+    <h2>1. Information We Collect</h2>
+    <h3>1.1 Information You Provide Directly</h3>
+    <p>We collect personal information you voluntarily provide to us, including:</p>
+    <ul>
+      <li><strong>Contact Information:</strong> Name, email address, phone number, and mailing address when you fill out contact forms, volunteer applications, or donation forms.</li>
+      <li><strong>Student Enrollment Information:</strong> Student name, date of birth, grade level, school, parent/guardian contact information, and academic background when enrolling a student in our programs.</li>
+      <li><strong>Donation Information:</strong> Name, billing address, email, and payment information when you make a charitable donation. Note: We do not store full credit card numbers on our servers.</li>
+      <li><strong>Volunteer Information:</strong> Background check information, employment history, references, and skill sets when you apply to volunteer.</li>
+      <li><strong>Communication Data:</strong> Content of messages you send to us via email, contact forms, or mail.</li>
+      <li><strong>Newsletter Subscriptions:</strong> Email address and communication preferences when you subscribe to our newsletter.</li>
+    </ul>
+    <h3>1.2 Information Collected Automatically</h3>
+    <p>When you visit our website, we may automatically collect:</p>
+    <ul>
+      <li>IP address and general geographic location</li>
+      <li>Browser type and version</li>
+      <li>Pages visited and time spent on our website</li>
+      <li>Referring website URL</li>
+      <li>Device type and operating system</li>
+      <li>Cookie data and other tracking technologies</li>
+    </ul>
+
+    <h2>2. How We Use Your Information</h2>
+    <p>We use the information we collect for the following purposes:</p>
+    <ul>
+      <li><strong>Program Delivery:</strong> To enroll students, communicate with families, and provide educational services tailored to each student's needs.</li>
+      <li><strong>Volunteer Management:</strong> To process volunteer applications, conduct background checks, coordinate schedules, and communicate with volunteers.</li>
+      <li><strong>Donation Processing:</strong> To process charitable donations, issue tax receipts, and communicate with donors about their contributions and impact.</li>
+      <li><strong>Communications:</strong> To send newsletters, event invitations, program updates, and other organizational communications. You may opt out at any time.</li>
+      <li><strong>Legal Compliance:</strong> To comply with applicable federal, state, and local laws, regulations, and legal obligations.</li>
+      <li><strong>Website Improvement:</strong> To analyze website usage, improve user experience, and enhance our digital presence.</li>
+      <li><strong>Grant Reporting:</strong> Aggregate, anonymized data may be used in reports to funders and government agencies to demonstrate program impact.</li>
+    </ul>
+
+    <h2>3. How We Share Your Information</h2>
+    <p>SIHAF K-12 Learning Academy does not sell, rent, or trade your personal information to third parties. We may share your information only in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Service Providers:</strong> We may share information with trusted third-party vendors who assist us with operations, including email platforms, payment processors, background check providers, and IT services. These providers are contractually bound to protect your data.</li>
+      <li><strong>School Partners:</strong> With written parent/guardian consent, we may share relevant student academic information with partnering schools to coordinate support services.</li>
+      <li><strong>Legal Requirements:</strong> We may disclose information when required by law, subpoena, court order, or when necessary to protect the safety and rights of SIHAF, our students, or the public.</li>
+      <li><strong>Organizational Transfers:</strong> In the unlikely event of a merger, acquisition, or dissolution, personal data may be transferred in accordance with applicable law and this Privacy Policy.</li>
+    </ul>
+
+    <h2>4. Data Security</h2>
+    <p>We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, alteration, and destruction. These measures include SSL/TLS encryption for data transmission, secure server storage, access controls and authentication, regular security audits, and staff training on data protection.</p>
+    <p>However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security. In the event of a data breach that affects your rights or freedoms, we will notify affected individuals and relevant authorities as required by law.</p>
+
+    <h2>5. Cookies & Tracking Technologies</h2>
+    <p>Our website uses cookies and similar tracking technologies to enhance your browsing experience, analyze website traffic, and understand user behavior. For full details, please see our Cookie Policy. You can control cookie settings through your browser preferences. Note that disabling certain cookies may affect website functionality.</p>
+
+    <h2>6. Children's Privacy (COPPA Compliance)</h2>
+    <p>SIHAF K-12 Learning Academy is dedicated to protecting the privacy of minors. We do not knowingly collect personal information from children under the age of 13 without verifiable parental consent, in compliance with the Children's Online Privacy Protection Act (COPPA). For students enrolled in our programs:</p>
+    <ul>
+      <li>All student enrollment information is collected through parents/guardians, not directly from minor students through our website.</li>
+      <li>We do not publish photographs, videos, or identifying information about enrolled students without explicit written consent from parents/guardians.</li>
+      <li>Parents/guardians have the right to review, modify, or request deletion of their child's information at any time.</li>
+      <li>If you believe we have inadvertently collected personal information from a child under 13, please contact us immediately at edu@sihafk12learningacademy.site.</li>
+    </ul>
+
+    <h2>7. Your Rights & Choices</h2>
+    <p>Depending on your location, you may have the following rights with respect to your personal information:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+      <li><strong>Deletion:</strong> Request deletion of your personal information, subject to certain legal exceptions.</li>
+      <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time by clicking "unsubscribe" in any email or contacting us directly.</li>
+      <li><strong>Data Portability:</strong> Request that we provide your data in a portable, machine-readable format.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at edu@sihafk12learningacademy.site. We will respond to your request within 30 days.</p>
+
+    <h2>8. Third-Party Links</h2>
+    <p>Our website may contain links to third-party websites, social media platforms, and external resources. SIHAF K-12 Learning Academy is not responsible for the privacy practices of these third parties. We encourage you to review the privacy policies of any external sites you visit.</p>
+
+    <h2>9. Retention of Data</h2>
+    <p>We retain personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, comply with legal obligations, resolve disputes, and enforce agreements. Student program records are typically retained for seven years following a student's last interaction with SIHAF. Donor records are retained permanently for nonprofit accounting and legal compliance purposes.</p>
+
+    <h2>10. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technologies, or legal requirements. We will notify you of any material changes by posting the updated policy on our website and updating the "Last Updated" date. Continued use of our website or services following changes constitutes your acceptance of the revised policy.</p>
+
+    <h2>11. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+    <ul>
+      <li><strong>Organization:</strong> SIHAF K-12 Learning Academy</li>
+      <li><strong>Address:</strong> 350 Hearne Ave, Shreveport, LA 71103, United States</li>
+      <li><strong>Email:</strong> edu@sihafk12learningacademy.site</li>
+      <li><strong>EIN:</strong> 47-1775962</li>
+    </ul>
+  </div>
+</div><!-- END PRIVACY -->
+
+<!-- ============================
+     TERMS & CONDITIONS
+============================ -->
+<div class="page" id="page-terms">
+  <div class="policy-hero">
+    <h1>Terms & Conditions</h1>
+    <p>The terms governing your use of the SIHAF K-12 Learning Academy website and services</p>
+  </div>
+  <div class="policy-content">
+    <div class="policy-meta"><strong>Effective Date:</strong> January 1, 2024 &nbsp;|&nbsp; <strong>Last Updated:</strong> March 1, 2025</div>
+    <p>Welcome to the SIHAF K-12 Learning Academy website. These Terms and Conditions ("Terms") govern your access to and use of our website located at sihafk12learningacademy.site and all related services provided by SIHAF K-12 Learning Academy, a Louisiana nonprofit corporation and federally recognized 501(c)(3) organization (EIN: 47-1775962). By accessing or using our website, you agree to be bound by these Terms.</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By using this website, you confirm that you are at least 18 years of age, or are accessing the site under the supervision of a parent or guardian. If you do not agree to these Terms, please discontinue use of our website immediately. These Terms apply to all visitors, users, donors, volunteers, and anyone else who accesses or uses our website.</p>
+
+    <h2>2. Use of the Website</h2>
+    <p>You agree to use our website only for lawful purposes and in a manner that does not infringe the rights of others or restrict or inhibit their use of the website. Prohibited activities include:</p>
+    <ul>
+      <li>Transmitting any unlawful, harmful, threatening, abusive, harassing, or defamatory content</li>
+      <li>Using the website to impersonate any person or entity, or to misrepresent your affiliation with any person or entity</li>
+      <li>Attempting to gain unauthorized access to any portion of the website or any related systems</li>
+      <li>Introducing any viruses, malware, or other harmful or disruptive code</li>
+      <li>Scraping, crawling, or using automated tools to collect data from our website without our written consent</li>
+      <li>Using content from our website for commercial purposes without prior written authorization</li>
+    </ul>
+
+    <h2>3. Intellectual Property</h2>
+    <p>All content on this website, including but not limited to text, graphics, logos, images, audio clips, digital downloads, data compilations, and software, is the property of SIHAF K-12 Learning Academy or its content suppliers and is protected by United States and international copyright laws. You may view, print, and download content for personal, non-commercial use only. Any other use requires prior written consent from SIHAF K-12 Learning Academy.</p>
+
+    <h2>4. Donations & Financial Transactions</h2>
+    <p>All donations made through our website are voluntary charitable contributions. By making a donation, you acknowledge that:</p>
+    <ul>
+      <li>Donations are generally non-refundable except as provided in our Refund/Donation Policy</li>
+      <li>SIHAF K-12 Learning Academy is a 501(c)(3) nonprofit organization and donations are tax-deductible to the extent permitted by law</li>
+      <li>You are responsible for verifying the tax deductibility of your donation with your tax advisor</li>
+      <li>Payment information is processed by our secure third-party payment processor and is not stored on our servers</li>
+      <li>We will provide a donation acknowledgment letter for your records</li>
+    </ul>
+
+    <h2>5. Volunteer Participation</h2>
+    <p>Volunteer opportunities offered through our website are subject to additional terms, requirements, and policies, including our Volunteer Agreement and Code of Conduct. All volunteers must complete orientation training and background checks before working with students. SIHAF reserves the right to decline or discontinue volunteer arrangements at any time.</p>
+
+    <h2>6. Program Enrollment</h2>
+    <p>Enrollment in our educational programs is subject to availability, eligibility requirements, and our program policies. SIHAF reserves the right to modify, suspend, or discontinue programs at any time. We will make reasonable efforts to notify enrolled families of any significant changes to programs.</p>
+
+    <h2>7. Disclaimer of Warranties</h2>
+    <p>This website is provided on an "as is" and "as available" basis without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. SIHAF K-12 Learning Academy does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, SIHAF K-12 Learning Academy shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of, or inability to use, this website or our services. Our total liability for any claims arising from your use of this website shall not exceed the amount you donated to us in the twelve months preceding the claim.</p>
+
+    <h2>9. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless SIHAF K-12 Learning Academy, its officers, directors, employees, volunteers, and agents from any claims, damages, losses, liabilities, and expenses (including attorney's fees) arising from your violation of these Terms or your use of our website.</p>
+
+    <h2>10. Governing Law</h2>
+    <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of the State of Louisiana, without regard to its conflict of law provisions. Any legal action or proceeding arising under these Terms shall be brought exclusively in the state or federal courts located in Caddo Parish, Louisiana.</p>
+
+    <h2>11. Changes to Terms</h2>
+    <p>We reserve the right to update or modify these Terms at any time. Changes will be posted on this page with an updated effective date. Continued use of our website after changes are posted constitutes your acceptance of the revised Terms.</p>
+
+    <h2>12. Contact</h2>
+    <p>Questions about these Terms should be directed to: SIHAF K-12 Learning Academy, 350 Hearne Ave, Shreveport, LA 71103 | edu@sihafk12learningacademy.site | EIN: 47-1775962</p>
+  </div>
+</div><!-- END TERMS -->
+
+<!-- ============================
+     COOKIE POLICY
+============================ -->
+<div class="page" id="page-cookies">
+  <div class="policy-hero">
+    <h1>Cookie Policy</h1>
+    <p>How and why SIHAF K-12 Learning Academy uses cookies on its website</p>
+  </div>
+  <div class="policy-content">
+    <div class="policy-meta"><strong>Effective Date:</strong> January 1, 2024 &nbsp;|&nbsp; <strong>Last Updated:</strong> March 1, 2025</div>
+    <p>This Cookie Policy explains how SIHAF K-12 Learning Academy ("SIHAF," "we," "us," or "our") uses cookies and similar tracking technologies when you visit our website. By continuing to browse our website, you consent to our use of cookies as described in this policy.</p>
+
+    <h2>1. What Are Cookies?</h2>
+    <p>Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website. They help websites remember information about your visit, such as your preferences, login status, and browsing behavior. Cookies make it possible for websites to function efficiently and provide a better user experience.</p>
+
+    <h2>2. Types of Cookies We Use</h2>
+    <h3>2.1 Strictly Necessary Cookies</h3>
+    <p>These cookies are essential for our website to function properly. They enable core functionality such as security, network management, and accessibility. You cannot opt out of these cookies as the website cannot function without them.</p>
+    <ul>
+      <li><strong>Session cookies:</strong> Temporary cookies that expire when you close your browser, used to maintain your session as you navigate our website.</li>
+      <li><strong>Security cookies:</strong> Used to authenticate users and prevent fraudulent use of accounts.</li>
+      <li><strong>Accessibility cookies:</strong> Remember your accessibility preferences such as font size and contrast settings.</li>
+    </ul>
+    <h3>2.2 Performance and Analytics Cookies</h3>
+    <p>These cookies collect information about how visitors use our website, such as which pages are visited most often, how long visitors spend on each page, and any error messages. This information is used to improve the performance of our website. All data collected is aggregated and anonymous.</p>
+    <ul>
+      <li><strong>Google Analytics:</strong> We use Google Analytics to understand website traffic and user behavior. Google Analytics collects anonymized data about page views, session duration, bounce rate, and geographic location.</li>
+    </ul>
+    <h3>2.3 Functionality Cookies</h3>
+    <p>These cookies allow the website to remember choices you make (such as your language preference, dark/light mode selection, or donation form data) to provide a more personalized experience.</p>
+    <h3>2.4 Marketing and Social Media Cookies</h3>
+    <p>We may use cookies to deliver relevant social media content and to track the effectiveness of our communications. These cookies may be set by third-party social media platforms like Facebook and Instagram.</p>
+
+    <h2>3. Cookie Duration</h2>
+    <ul>
+      <li><strong>Session Cookies:</strong> Deleted when you close your browser</li>
+      <li><strong>Persistent Cookies:</strong> Remain on your device for a set period (ranging from 30 days to 2 years depending on the cookie)</li>
+    </ul>
+
+    <h2>4. Managing Your Cookie Preferences</h2>
+    <p>You have the right to decide whether to accept or reject cookies (except strictly necessary cookies). You can manage your cookie preferences in the following ways:</p>
+    <ul>
+      <li><strong>Browser Settings:</strong> Most browsers allow you to view, manage, and delete cookies through their settings menu. Common browsers include Chrome, Firefox, Safari, and Edge — each provides clear instructions for cookie management.</li>
+      <li><strong>Opt-Out Tools:</strong> You can opt out of Google Analytics tracking by installing the Google Analytics Opt-out Browser Add-on.</li>
+    </ul>
+    <p>Please note that disabling certain cookies may impact the functionality of our website and your user experience.</p>
+
+    <h2>5. Third-Party Cookies</h2>
+    <p>Some cookies on our website are set by third-party services we use, including payment processors, social media platforms, and analytics providers. We do not control these third-party cookies and their use is governed by the respective third parties' privacy and cookie policies.</p>
+
+    <h2>6. Changes to This Cookie Policy</h2>
+    <p>We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated date. Please check back periodically to stay informed.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have questions about our use of cookies, please contact us at: edu@sihafk12learningacademy.site | 350 Hearne Ave, Shreveport, LA 71103</p>
+  </div>
+</div><!-- END COOKIES -->
+
+<!-- ============================
+     REFUND / DONATION POLICY
+============================ -->
+<div class="page" id="page-refund">
+  <div class="policy-hero">
+    <h1>Refund & Donation Policy</h1>
+    <p>Our policies regarding charitable donations, refunds, and recurring giving</p>
+  </div>
+  <div class="policy-content">
+    <div class="policy-meta"><strong>Effective Date:</strong> January 1, 2024 &nbsp;|&nbsp; <strong>Last Updated:</strong> March 1, 2025 &nbsp;|&nbsp; <strong>EIN:</strong> 47-1775962</div>
+    <p>SIHAF K-12 Learning Academy deeply values the generosity of every donor who supports our mission. This Refund and Donation Policy outlines the terms under which donations are made and the circumstances under which refunds may be considered.</p>
+
+    <h2>1. General Donation Policy</h2>
+    <p>All donations made to SIHAF K-12 Learning Academy are charitable contributions to a federally recognized 501(c)(3) nonprofit organization. As such:</p>
+    <ul>
+      <li>All donations are tax-deductible to the fullest extent permitted by law.</li>
+      <li>Upon receipt of your donation, you will receive an official donation acknowledgment letter or email receipt for your tax records.</li>
+      <li>Donations are applied to our programs and operations as directed by the donor (or where most needed if no direction is given).</li>
+      <li>We are committed to using your gift wisely and in alignment with our mission. A minimum of 72% of every donated dollar goes directly to program delivery.</li>
+    </ul>
+
+    <h2>2. Non-Refundable Nature of Charitable Donations</h2>
+    <p>In general, charitable donations to SIHAF K-12 Learning Academy are non-refundable. This is consistent with standard nonprofit practice and reflects the fact that donations are immediately deployed to support our programs and the students who depend on them.</p>
+    <p>By submitting a donation, you acknowledge that you are making a voluntary charitable contribution and that no goods or services are provided in exchange for your donation (unless otherwise specified, in which case only the excess amount above the fair market value of those goods/services is deductible).</p>
+
+    <h2>3. Exceptions — When Refunds May Be Considered</h2>
+    <p>We recognize that errors can occur. SIHAF K-12 Learning Academy may consider refund requests under the following limited circumstances:</p>
+    <ul>
+      <li><strong>Duplicate Transactions:</strong> If you accidentally made the same donation more than once in error, we will refund the duplicate charge upon verification.</li>
+      <li><strong>Incorrect Amount:</strong> If you donated an amount significantly different from your intention due to a technical error, please contact us within 30 days of the transaction date.</li>
+      <li><strong>Fraudulent Transactions:</strong> If your payment method was used without your authorization to make a donation, contact us and your financial institution immediately. We will cooperate fully with fraud investigations.</li>
+      <li><strong>Processing Errors:</strong> If a technical or processing error resulted in an unintended charge, we will investigate and provide a remedy within 14 business days.</li>
+    </ul>
+    <p>To request a refund under any of these circumstances, please contact us at edu@sihafk12learningacademy.site within <strong>30 days</strong> of the original transaction. Include your name, donation date, amount, and a brief description of the issue. We will respond within 5 business days.</p>
+
+    <h2>4. Recurring Donations</h2>
+    <p>If you set up a recurring (monthly or annual) donation:</p>
+    <ul>
+      <li>You may cancel your recurring gift at any time by contacting us at edu@sihafk12learningacademy.site or by logging into your donor account if applicable.</li>
+      <li>Cancellation requests should be made at least 5 business days before the next scheduled charge to ensure the upcoming payment is not processed.</li>
+      <li>Payments already processed before cancellation are generally non-refundable per our general donation policy.</li>
+      <li>We will confirm your cancellation in writing within 3 business days.</li>
+    </ul>
+
+    <h2>5. In-Kind Donations</h2>
+    <p>Non-monetary (in-kind) donations such as supplies, equipment, books, or other materials are accepted at the sole discretion of SIHAF K-12 Learning Academy. In-kind donations cannot be returned once accepted. Donors are responsible for obtaining their own independent appraisal for tax deduction purposes if the in-kind gift exceeds $500.</p>
+
+    <h2>6. Donor-Designated Funds</h2>
+    <p>If you designate your donation for a specific program and that program is discontinued or modified, SIHAF K-12 Learning Academy will make a good-faith effort to apply your gift to the most closely related active program. If you have concerns about how a designated gift was applied, please contact us within 60 days.</p>
+
+    <h2>7. Contact for Donation Inquiries</h2>
+    <p>For all donation-related questions, including refund requests, receipts, or recurring gift changes, please contact: edu@sihafk12learningacademy.site | 350 Hearne Ave, Shreveport, LA 71103 | EIN: 47-1775962</p>
+  </div>
+</div><!-- END REFUND -->
+
+<!-- ============================
+     ACCESSIBILITY STATEMENT
+============================ -->
+<div class="page" id="page-accessibility">
+  <div class="policy-hero">
+    <h1>Accessibility Statement</h1>
+    <p>SIHAF K-12 Learning Academy's commitment to digital accessibility for all users</p>
+  </div>
+  <div class="policy-content">
+    <div class="policy-meta"><strong>Effective Date:</strong> January 1, 2024 &nbsp;|&nbsp; <strong>Last Updated:</strong> March 1, 2025</div>
+    <p>SIHAF K-12 Learning Academy is committed to ensuring digital accessibility for people of all abilities, including people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards.</p>
+
+    <h2>1. Our Commitment</h2>
+    <p>SIHAF K-12 Learning Academy believes that every person — regardless of ability, disability, age, or technological proficiency — deserves equal access to information about our programs, services, and mission. We are actively working to make our website accessible in accordance with the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, as published by the World Wide Web Consortium (W3C).</p>
+
+    <h2>2. Conformance Status</h2>
+    <p>We aim to conform to WCAG 2.1 Level AA standards. Our ongoing efforts include:</p>
+    <ul>
+      <li><strong>Text Alternatives:</strong> Providing meaningful alt text for all images, icons, and non-text content.</li>
+      <li><strong>Color Contrast:</strong> Ensuring sufficient color contrast ratios between text and backgrounds throughout the site.</li>
+      <li><strong>Keyboard Navigation:</strong> Ensuring all functionality is accessible via keyboard navigation without requiring a mouse.</li>
+      <li><strong>Readable Fonts:</strong> Using legible, scalable fonts that remain readable when zoomed or enlarged.</li>
+      <li><strong>Clear Headings:</strong> Organizing content with logical heading hierarchies for screen reader users.</li>
+      <li><strong>Form Labels:</strong> Providing clear labels and error messages for all form fields.</li>
+      <li><strong>Language Declaration:</strong> Properly declaring the language of our web pages for assistive technology.</li>
+      <li><strong>Focus Indicators:</strong> Maintaining visible focus indicators for keyboard users navigating through interactive elements.</li>
+    </ul>
+
+    <h2>3. Assistive Technology Compatibility</h2>
+    <p>Our website is designed and tested for compatibility with the following assistive technologies:</p>
+    <ul>
+      <li>Screen readers including JAWS, NVDA, and VoiceOver</li>
+      <li>Voice recognition software such as Dragon NaturallySpeaking</li>
+      <li>Screen magnification software</li>
+      <li>Alternative input devices including keyboard-only navigation</li>
+      <li>High contrast display modes</li>
+    </ul>
+
+    <h2>4. Known Limitations</h2>
+    <p>While we strive for full accessibility, some content may not yet fully conform to WCAG 2.1 Level AA. Known areas we are actively working to improve include:</p>
+    <ul>
+      <li>Some older PDF documents may not be fully accessible to screen readers. We are working to remediate or replace these documents.</li>
+      <li>Some embedded third-party content (such as maps and social media feeds) may not be fully controlled by us and may have their own accessibility limitations.</li>
+      <li>Videos and multimedia content are being progressively updated to include captions and transcripts.</li>
+    </ul>
+
+    <h2>5. Accessibility Features of Our Website</h2>
+    <ul>
+      <li>🌙 <strong>Dark Mode:</strong> Toggle dark mode for reduced eye strain using the moon icon in the navigation bar.</li>
+      <li>🔍 <strong>Scalable Text:</strong> All text can be enlarged using browser zoom functions without loss of content or functionality.</li>
+      <li>⌨️ <strong>Keyboard Accessible:</strong> All major features of our website are navigable via keyboard.</li>
+      <li>📱 <strong>Mobile Responsive:</strong> Our website is fully responsive and accessible on all devices and screen sizes.</li>
+    </ul>
+
+    <h2>6. Feedback & Contact</h2>
+    <p>We welcome your feedback on the accessibility of our website. If you experience any barriers, have difficulty accessing any content, or need information in an alternative format, please contact us:</p>
+    <ul>
+      <li><strong>Email:</strong> edu@sihafk12learningacademy.site</li>
+      <li><strong>Mail:</strong> 350 Hearne Ave, Shreveport, LA 71103, United States</li>
+    </ul>
+    <p>We will make every effort to respond to your accessibility inquiry within 5 business days and to address any concerns as quickly as possible.</p>
+
+    <h2>7. Formal Complaints</h2>
+    <p>If you are not satisfied with our response to your accessibility complaint, you have the right to contact the relevant enforcement authority. In the United States, accessibility complaints related to organizations receiving federal funding may be directed to the U.S. Department of Education's Office for Civil Rights.</p>
+
+    <h2>8. Assessment Approach</h2>
+    <p>SIHAF K-12 Learning Academy assesses the accessibility of our website through:</p>
+    <ul>
+      <li>Self-evaluation by our web development and communications teams</li>
+      <li>Regular testing using automated accessibility tools</li>
+      <li>User feedback from individuals with disabilities</li>
+      <li>Periodic third-party accessibility audits</li>
+    </ul>
+    <p>This statement was last reviewed and updated on March 1, 2025. We are committed to ongoing improvement and will update this statement as we make progress toward full accessibility compliance.</p>
+  </div>
+</div><!-- END ACCESSIBILITY -->
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="cursor:default;">
+          <div class="nav-logo-icon">🎓</div>
+          <div class="nav-logo-text" style="color:white;">SIHAF K-12<span style="color:var(--green-bright);">Learning Academy</span></div>
+        </div>
+        <p>Empowering K-12 students through quality education, mentorship, and community in Shreveport, Louisiana. Every child deserves a champion.</p>
+        <div class="badge-501c3" style="background:rgba(102,187,106,0.1);border-color:var(--green-bright);color:var(--green-bright);">✅ 501(c)(3) · EIN: 47-1775962</div>
+        <div class="footer-social mt-16">
+          <div class="social-icon" title="Facebook">📘</div>
+          <div class="social-icon" title="Instagram">📸</div>
+          <div class="social-icon" title="Twitter">🐦</div>
+          <div class="social-icon" title="YouTube">▶️</div>
+          <div class="social-icon" title="LinkedIn">💼</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">About Us</a></li>
+          <li><a onclick="showPage('programs')">Programs</a></li>
+          <li><a onclick="showPage('donate')">Donate</a></li>
+          <li><a onclick="showPage('volunteer')">Volunteer</a></li>
+          <li><a onclick="showPage('blog')">News & Blog</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+          <li><a onclick="showPage('faq')">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal & Policies</h4>
+        <ul>
+          <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+          <li><a onclick="showPage('terms')">Terms & Conditions</a></li>
+          <li><a onclick="showPage('cookies')">Cookie Policy</a></li>
+          <li><a onclick="showPage('refund')">Refund Policy</a></li>
+          <li><a onclick="showPage('accessibility')">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <span class="icon">📍</span>
+          <span>350 Hearne Ave<br>Shreveport, LA 71103<br>United States</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">📧</span>
+          <span>edu@sihafk12learningacademy.site</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">🕐</span>
+          <span>Mon–Fri: 9AM–6PM<br>Sat: 9AM–2PM</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-ein">
+      <span>501(c)(3) Nonprofit Organization</span> · EIN: <span>47-1775962</span> · All donations are tax-deductible to the extent allowed by law. · SIHAF K-12 Learning Academy is registered in the State of Louisiana.
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SIHAF K-12 Learning Academy. All Rights Reserved. Made with ❤️ for our community.</p>
+      <div class="footer-bottom-links">
+        <a onclick="showPage('privacy')">Privacy Policy</a>
+        <a onclick="showPage('terms')">Terms</a>
+        <a onclick="showPage('cookies')">Cookies</a>
+        <a onclick="showPage('accessibility')">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+  // PAGE NAVIGATION
+  const pages = ['home','about','programs','donate','volunteer','blog','contact','faq','privacy','terms','cookies','refund','accessibility'];
+  const navIds = ['home','about','programs','donate','volunteer','blog','contact','faq'];
+  function showPage(name) {
+    pages.forEach(p => {
+      const el = document.getElementById('page-'+p);
+      if(el) el.classList.remove('active');
+    });
+    const target = document.getElementById('page-'+name);
+    if(target) target.classList.add('active');
+    navIds.forEach(id => {
+      const el = document.getElementById('nav-'+id);
+      if(el) el.classList.remove('active');
+    });
+    const navEl = document.getElementById('nav-'+name);
+    if(navEl) navEl.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+    // Show/hide footer
+    const footer = document.getElementById('site-footer');
+    if(footer) footer.style.display = 'block';
+  }
+
+  // DARK MODE
+  document.getElementById('darkToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark');
+    this.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  });
+
+  // HAMBURGER
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // BACK TO TOP
+  window.addEventListener('scroll', function() {
+    document.getElementById('backTop').classList.toggle('show', window.scrollY > 300);
+  });
+
+  // DONATE AMOUNTS
+  function setAmount(btn, amount) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('customAmount').value = amount;
+  }
+  function setType(btn, type) {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // FAQ TOGGLE
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const icon = el.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate'); });
+    if(!isOpen) { answer.classList.add('open'); icon.classList.add('rotate'); }
+  }
+
+  // BLOG CATEGORIES
+  document.querySelectorAll('.blog-cat-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.blog-cat-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // TOAST
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+  function handleForm() { showToast('✅ Message sent! We\'ll be in touch within 48 hours.'); }
+  function handleDonate() { showToast('❤️ Thank you for your generous donation! Check your email for your receipt.'); }
+  function handleNewsletter(e) { e.preventDefault(); showToast('📧 Subscribed! Welcome to the SIHAF community.'); }
+</script>
 </body>
 </html>
